@@ -1,0 +1,143 @@
+{
+  "twitter": [
+    {
+      "twitter": "Null"
+    }
+  ],
+  "name": [
+    {
+      "name": "String"
+    }
+  ],
+  "externalId": [
+    {
+      "externalId": "String"
+    }
+  ],
+  "unsubscribeId": [
+    {
+      "unsubscribeId": "String"
+    }
+  ],
+  "progressTimestamps": [
+    {
+      "progressTimestamps": [
+        {
+          "progressTimestamps": "Double"
+        }
+      ]
+    }
+  ],
+  "website": [
+    {
+      "website": "String"
+    }
+  ],
+  "username": [
+    {
+      "username": "String"
+    }
+  ],
+  "isDonating": [
+    {
+      "isDonating": "Boolean"
+    }
+  ],
+  "github": [
+    {
+      "github": "Null"
+    }
+  ],
+  "completedChallenges": [
+    {
+      "completedChallenges": [
+        {
+          "completedChallenges": [
+            {
+              "id": "String"
+            },
+            {
+              "completedDate": "Double"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "completedChallenges": []
+    }
+  ],
+  "portfolio": [
+    {
+      "portfolio": []
+    }
+  ],
+  "_id": [
+    {
+      "_id": "ObjectId"
+    }
+  ],
+  "profileUI": [
+    {
+      "profileUI": [
+        {
+          "isLocked": "Boolean"
+        },
+        {
+          "showAbout": "Boolean"
+        },
+        {
+          "showCerts": "Boolean"
+        },
+        {
+          "showHeatMap": "Boolean"
+        },
+        {
+          "showLocation": "Boolean"
+        },
+        {
+          "showName": "Boolean"
+        },
+        {
+          "showPoints": "Boolean"
+        },
+        {
+          "showPortfolio": "Boolean"
+        },
+        {
+          "showTimeLine": "Boolean"
+        }
+      ]
+    }
+  ],
+  "about": [
+    {
+      "about": "String"
+    }
+  ],
+  "picture": [
+    {
+      "picture": "String"
+    }
+  ],
+  "acceptedPrivacyTerms": [
+    {
+      "acceptedPrivacyTerms": "Boolean"
+    }
+  ],
+  "points": [
+    {
+      "points": "Int32"
+    }
+  ],
+  "linkedin": [
+    {
+      "linkedin": "Null"
+    }
+  ],
+  "location": [
+    {
+      "location": "String"
+    }
+  ]
+}

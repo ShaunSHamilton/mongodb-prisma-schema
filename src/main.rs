@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+use clap::Parser;
 use futures_util::TryStreamExt;
 use mongodb::{
     bson::{doc, Bson, Document},
@@ -12,8 +13,6 @@ use tokio;
 // mongod --dbpath ~/data/prod/restore-6412e8c0ac8b9a17b12c4d47/
 
 type HashValue = HashMap<String, Vec<Value>>;
-
-use clap::Parser;
 
 /// Script to generate a schema for a MongoDB collection
 #[derive(Parser, Debug)]
@@ -180,5 +179,54 @@ fn bson_to_string(bson: &Bson) -> String {
         Bson::MaxKey => "MaxKey".to_string(),
         Bson::MinKey => "MinKey".to_string(),
         Bson::DbPointer(_) => "DbPointer".to_string(),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_build_schema() {
+        let mut schema_map: HashValue = HashMap::new();
+        let doc_1 = doc! {
+            "name": "Shaun",
+            "age": 25,
+            "likes": ["cats", "dogs", "rust"],
+            "dislikes": ["jquery", null, {"jsObjects": "because they are bad"}],
+        };
+        let doc_2 = doc! {
+            "name": "Tom",
+            "age": "28?",
+            "likes": "fishing",
+            "dislikes": ["not fishing", null, {"presentations": ["because they are difficult"]}],
+            "skills": {
+                "languages": ["js", "sql"],
+                "frameworks": ["react"]
+            }
+        };
+        build_schema(&doc_1, &mut schema_map);
+        build_schema(&doc_2, &mut schema_map);
+        let mut expected_hashmap = HashMap::new();
+        expected_hashmap.insert("name".to_string(), vec![serde_json::json!(["String"])]);
+        expected_hashmap.insert(
+            "age".to_string(),
+            vec![serde_json::json!(["Int32", "String"])],
+        );
+        expected_hashmap.insert(
+            "likes".to_string(),
+            vec![serde_json::json!(["[String]", "String"])],
+        );
+        expected_hashmap.insert(
+            "dislikes".to_string(),
+            vec![serde_json::json!([
+                "String", "Null", {"presentations": ["String", "[String]"]}
+            ])],
+        );
+        expected_hashmap.insert(
+            "skills".to_string(),
+            vec![serde_json::json!([{"frameworks": ["[String]"], "languages": ["[String]"]}])],
+        );
+
+        assert_eq!(schema_map, expected_hashmap);
     }
 }

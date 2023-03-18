@@ -1,5 +1,7 @@
 # MongoDB to Prisma Schema Generator
 
+![Test Status](https://github.com/ShaunSHamilton/mongodb-prisma-schema/actions/workflows/test.yml/badge.svg)
+
 ## How Works
 
 Recurses given collection, and generates a schema based on the data.
@@ -102,12 +104,20 @@ Will result in:
 
 ## Usage
 
+Generate schema
+
 ```bash
-cargo run --release -- --db <db> --collection <collection> --out <out>
+cargo run --release -- --db <db> --collection <collection> --out <out> --url <url>
 ```
 
 Example:
 
 ```bash
-cargo run --release -- --db freecodecamp --collection user --out schema.json
+cargo run --release -- --db freecodecamp --collection user --out schema.json --url mongodb://localhost:27017
+```
+
+Run tests
+
+```bash
+cargo test
 ```

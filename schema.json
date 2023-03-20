@@ -1,143 +1,188 @@
 {
-  "twitter": [
-    {
-      "twitter": "Null"
-    }
-  ],
-  "name": [
-    {
-      "name": "String"
-    }
-  ],
-  "externalId": [
-    {
-      "externalId": "String"
-    }
-  ],
-  "unsubscribeId": [
-    {
-      "unsubscribeId": "String"
-    }
-  ],
-  "progressTimestamps": [
-    {
-      "progressTimestamps": [
-        {
-          "progressTimestamps": "Double"
-        }
-      ]
-    }
-  ],
-  "website": [
-    {
-      "website": "String"
-    }
-  ],
-  "username": [
-    {
-      "username": "String"
-    }
-  ],
-  "isDonating": [
-    {
-      "isDonating": "Boolean"
-    }
+  "theme": [
+    "String"
   ],
   "github": [
-    {
-      "github": "Null"
-    }
+    "Null"
   ],
-  "completedChallenges": [
+  "emailVerifyTTL": [
+    "Null"
+  ],
+  "website": [
+    "String"
+  ],
+  "acceptedPrivacyTerms": [
+    "Boolean"
+  ],
+  "isBackEndCert": [
+    "Boolean"
+  ],
+  "is2018DataVisCert": [
+    "Boolean"
+  ],
+  "progressTimestamps": [
+    {},
     {
-      "completedChallenges": [
-        {
-          "completedChallenges": [
-            {
-              "id": "String"
-            },
-            {
-              "completedDate": "Double"
-            }
-          ]
-        }
+      "timestamp": [
+        "Double"
       ]
-    },
-    {
-      "completedChallenges": []
-    }
-  ],
-  "portfolio": [
-    {
-      "portfolio": []
     }
   ],
   "_id": [
-    {
-      "_id": "ObjectId"
-    }
+    "ObjectId"
+  ],
+  "picture": [
+    "String"
+  ],
+  "externalId": [
+    "String"
+  ],
+  "unsubscribeId": [
+    "String"
+  ],
+  "portfolio": [
+    {}
+  ],
+  "email": [
+    "String"
+  ],
+  "emailAuthLinkTTL": [
+    "Null"
+  ],
+  "isCheater": [
+    "Boolean"
+  ],
+  "is2018FullStackCert": [
+    "Boolean"
+  ],
+  "isJsAlgoDataStructCert": [
+    "Boolean"
   ],
   "profileUI": [
     {
-      "profileUI": [
-        {
-          "isLocked": "Boolean"
-        },
-        {
-          "showAbout": "Boolean"
-        },
-        {
-          "showCerts": "Boolean"
-        },
-        {
-          "showHeatMap": "Boolean"
-        },
-        {
-          "showLocation": "Boolean"
-        },
-        {
-          "showName": "Boolean"
-        },
-        {
-          "showPoints": "Boolean"
-        },
-        {
-          "showPortfolio": "Boolean"
-        },
-        {
-          "showTimeLine": "Boolean"
-        }
+      "showName": [
+        "Boolean"
+      ],
+      "showPoints": [
+        "Boolean"
+      ],
+      "showHeatMap": [
+        "Boolean"
+      ],
+      "isLocked": [
+        "Boolean"
+      ],
+      "showLocation": [
+        "Boolean"
+      ],
+      "showPortfolio": [
+        "Boolean"
+      ],
+      "showTimeLine": [
+        "Boolean"
+      ],
+      "showAbout": [
+        "Boolean"
+      ],
+      "showCerts": [
+        "Boolean"
       ]
     }
   ],
-  "about": [
+  "linkedin": [
+    "Null"
+  ],
+  "sendQuincyEmail": [
+    "Boolean"
+  ],
+  "currentChallengeId": [
+    "String"
+  ],
+  "isRespWebDesignCert": [
+    "Boolean"
+  ],
+  "isDonating": [
+    "Boolean"
+  ],
+  "password": [
+    "String"
+  ],
+  "isFullStackCert": [
+    "Boolean"
+  ],
+  "isFrontEndLibsCert": [
+    "Boolean"
+  ],
+  "completedChallenges": [
     {
-      "about": "String"
+      "completedDate": [
+        "Double"
+      ],
+      "id": [
+        "String"
+      ]
+    },
+    {},
+    {
+      "id": [
+        "String"
+      ],
+      "completedDate": [
+        "Double"
+      ],
+      "challengeType": [
+        "Int32"
+      ]
+    },
+    {
+      "completedDate": [
+        "Double"
+      ],
+      "id": [
+        "String"
+      ],
+      "files": [
+        {}
+      ]
     }
   ],
-  "picture": [
-    {
-      "picture": "String"
-    }
-  ],
-  "acceptedPrivacyTerms": [
-    {
-      "acceptedPrivacyTerms": "Boolean"
-    }
+  "username": [
+    "String"
   ],
   "points": [
-    {
-      "points": "Int32"
-    }
+    "Int32"
   ],
-  "linkedin": [
-    {
-      "linkedin": "Null"
-    }
+  "isDataVisCert": [
+    "Boolean"
   ],
   "location": [
-    {
-      "location": "String"
-    }
+    "String"
+  ],
+  "about": [
+    "String"
+  ],
+  "twitter": [
+    "Null"
+  ],
+  "isHonest": [
+    "Boolean"
+  ],
+  "isFrontEndCert": [
+    "Boolean"
+  ],
+  "name": [
+    "String"
+  ],
+  "isInfosecQaCert": [
+    "Boolean"
+  ],
+  "isBanned": [
+    "Boolean"
+  ],
+  "isApisMicroservicesCert": [
+    "Boolean"
+  ],
+  "emailVerified": [
+    "Boolean"
   ]
 }

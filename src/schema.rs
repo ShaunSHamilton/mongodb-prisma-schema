@@ -1,103 +1,90 @@
 use mongodb::bson::{Bson, Document};
-// use serde::Serialize;
+use serde::Serialize;
 use serde_json::{json, Value};
 use std::collections::HashMap;
 
-pub type Schema = HashMap<String, Vec<Value>>;
+#[derive(Debug, PartialEq, Eq, Serialize)]
+pub struct Schema(pub HashMap<String, Vec<Value>>);
 
-// #[derive(Serialize, PartialEq, Debug)]
-// pub enum HashValue {
-//     String(String),
-//     Array(Vec<HashValue>),
-//     Document(HashMap<String, Schema>),
-// }
+// pub type Schema = HashMap<String, Vec<Value>>;
 
-/// Recursive function that builds a schema from a bson document.
-/// Takes a bson document and a mutable reference to a hashmap.
-///
-/// 1. For each field in Bson
-///   - If Document, check each key
-///     - Recurse
-///   - If Array, check each item
-///     - Keep track of associated key
-///   - Else, add type to `key` Vec in HashMap
-fn g(bson: &Bson, schema_map: &mut Schema, prev_key: Option<String>) {
-    match bson {
+#[derive(Debug, Serialize, PartialEq, Eq)]
+pub struct Set {
+    pub schemas: Vec<Schema>,
+}
+
+impl Set {
+    pub fn new() -> Self {
+        Self { schemas: vec![] }
+    }
+    pub fn insert(&mut self, schema: Schema) {
+        // Before inserting, check if the schema already exists
+        if self.contains(&schema) {
+            return;
+        }
+        self.schemas.push(schema);
+    }
+    pub fn contains(&self, schema: &Schema) -> bool {
+        self.schemas.contains(schema)
+    }
+}
+
+impl Schema {
+    pub fn new() -> Self {
+        Self(HashMap::new())
+    }
+    pub fn insert(&mut self, key: String, value: Vec<Value>) {
+        self.0.insert(key, value);
+    }
+}
+
+impl From<&Document> for Schema {
+    fn from(doc: &Document) -> Self {
+        let mut schema = Schema::new();
+        for (key, value) in doc {
+            let t = get_type(value);
+            schema.insert(key.to_string(), vec![t]);
+        }
+        schema
+    }
+}
+
+fn get_type(bson: &Bson) -> Value {
+    let t = match bson {
         Bson::Document(doc) => {
+            let mut sub_doc = HashMap::new();
             for (key, value) in doc {
-                match value {
-                    Bson::Document(doc) => {
-                        let mut sub_schema_map: Schema = HashMap::new();
-                        let bson = Bson::Document(doc.clone());
-                        let prev_key = Some(key.to_string());
-                        g(&bson, &mut sub_schema_map, prev_key);
-                        append_to_schema_map(schema_map, key.to_string(), json!(sub_schema_map));
-                    }
-                    Bson::Array(arr) => {
-                        let mut sub_schema_map: Schema = HashMap::new();
-                        for item in arr {
-                            let prev_key = Some(key.to_string());
-                            g(item, &mut sub_schema_map, prev_key);
-                        }
-                        let sub_schema_values = sub_schema_map.values().collect::<Vec<_>>();
-                        let prev_key = Some(key.to_string());
-                        append_to_schema_map(
-                            schema_map,
-                            prev_key.unwrap(),
-                            json!(sub_schema_values),
-                        );
-                    }
-                    _ => {
-                        append_to_schema_map(
-                            schema_map,
-                            key.to_string(),
-                            json!(bson_to_string(&value)),
-                        );
-                    }
-                }
+                let t = get_type(value);
+                sub_doc.insert(key.to_string(), json!(t));
             }
+            json!(sub_doc)
         }
         Bson::Array(arr) => {
-            let mut sub_schema_map: Schema = HashMap::new();
-            for item in arr {
-                g(item, &mut sub_schema_map, prev_key.clone());
+            let mut sub_arr = Vec::new();
+            for value in arr {
+                let t = get_type(value);
+
+                if !sub_arr.contains(&t) {
+                    sub_arr.push(t);
+                }
             }
-            let sub_schema_values = sub_schema_map.values().collect::<Vec<_>>();
-            append_to_schema_map(schema_map, prev_key.unwrap(), json!(sub_schema_values));
+            json!(sub_arr)
         }
-        other => {
-            append_to_schema_map(schema_map, prev_key.unwrap(), json!(bson_to_string(&other)));
-        }
-    }
+        _ => json!(&bson_to_string(bson)),
+    };
+    t
 }
 
-pub fn build_schema(doc: &Document, schema_map: &mut Schema) {
-    let bson = Bson::Document(doc.clone());
-    g(&bson, schema_map, None);
-}
-
-fn append_to_schema_map(schema_map: &mut Schema, key: String, value: Value) {
-    if let Some(values) = schema_map.get_mut(&key) {
-        if !values.contains(&value) {
-            values.push(value);
-        }
-    } else {
-        schema_map.insert(key, vec![value]);
-    }
-}
-
-pub fn write_hashmap(schema_map: &Schema, output: String) {
+pub fn write_hashmap(set: &Set, output: String) {
     let path = std::path::Path::new(&output);
 
-    std::fs::write(path, serde_json::to_string_pretty(schema_map).unwrap()).unwrap();
+    std::fs::write(path, serde_json::to_string_pretty(&set.schemas).unwrap()).unwrap();
 }
 
 fn bson_to_string(bson: &Bson) -> String {
     match bson {
         Bson::Double(_) => "Double".to_string(),
         Bson::String(_) => "String".to_string(),
-        Bson::Array(_) => "Array".to_string(),
-        Bson::Document(_) => "Document".to_string(),
         Bson::Boolean(_) => "Boolean".to_string(),
         Bson::Null => "Null".to_string(),
         Bson::RegularExpression(_) => "RegularExpression".to_string(),
@@ -115,6 +102,9 @@ fn bson_to_string(bson: &Bson) -> String {
         Bson::MaxKey => "MaxKey".to_string(),
         Bson::MinKey => "MinKey".to_string(),
         Bson::DbPointer(_) => "DbPointer".to_string(),
+        // Unreachable
+        Bson::Array(_) => "Array".to_string(),
+        Bson::Document(_) => "Document".to_string(),
     }
 }
 
@@ -125,7 +115,6 @@ mod tests {
     use serde_json::json;
     #[test]
     fn test_build_schema() {
-        let mut schema_map: Schema = HashMap::new();
         let doc_1 = doc! {
             "name": "Shaun",
             "age": 25,
@@ -144,16 +133,20 @@ mod tests {
                 "frameworks": ["react"]
             }
         };
-        build_schema(&doc_1, &mut schema_map);
-        build_schema(&doc_2, &mut schema_map);
-        let mut expected_hashmap = HashMap::new();
-        expected_hashmap.insert("name".to_string(), vec![json!("String")]);
-        expected_hashmap.insert("age".to_string(), vec![json!("Int32"), json!("String")]);
-        expected_hashmap.insert(
+        let mut schemas = Set::new();
+        for doc in vec![doc_1, doc_2] {
+            let schema = Schema::from(&doc);
+            schemas.insert(schema);
+        }
+        let mut expected_schemas = Set::new();
+        let mut schema = Schema::new();
+        schema.insert("name".to_string(), vec![json!("String")]);
+        schema.insert("age".to_string(), vec![json!("Int32"), json!("String")]);
+        schema.insert(
             "likes".to_string(),
             vec![json!(["String"]), json!("String")],
         );
-        expected_hashmap.insert(
+        schema.insert(
             "dislikes".to_string(),
             vec![json!([
                 "String",
@@ -162,14 +155,16 @@ mod tests {
                 { "presentations": [["String"]] }
             ])],
         );
-        expected_hashmap.insert(
+        schema.insert(
             "skills".to_string(),
             vec![json!({"frameworks": [["String"]], "languages": [["String"]]})],
         );
-        expected_hashmap.insert("arr".to_string(), vec![json!([])]);
+        schema.insert("arr".to_string(), vec![json!([])]);
 
-        println!("{:#?}", schema_map);
-        println!("{:#?}", expected_hashmap);
-        assert_eq!(schema_map, expected_hashmap);
+        expected_schemas.insert(schema);
+
+        println!("{:#?}", schemas.schemas);
+        println!("{:#?}", expected_schemas.schemas);
+        assert_eq!(schemas, expected_schemas);
     }
 }

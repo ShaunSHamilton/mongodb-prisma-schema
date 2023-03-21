@@ -19,16 +19,27 @@ async fn main() -> mongodb::error::Result<()> {
     // Parse your connection string into an options struct
     let collection = get_collection(&args.uri, &args.db, &args.collection).await?;
     // find the first 2 documents in users_collection, and print them, without iterating over the entire cursor
+    let num_docs = 1_000;
     let mut cursor = collection
-        .find(doc! {}, FindOptions::builder().limit(10).build())
+        .find(doc! {}, FindOptions::builder().limit(num_docs).build())
         .await?;
 
     let mut schemas = Set::new();
-
+    let mut count = 0;
     while let Some(user) = cursor.try_next().await? {
         let schema = Schema::from(&user);
         schemas.insert(schema);
+        // Progress
+        count += 1;
+        if count % 100_000 == 0 {
+            println!("Docs processed: {}", count);
+        }
     }
+    println!(
+        "Number of schemas for {:?} docs = {:#?}",
+        num_docs,
+        schemas.schemas.len()
+    );
     write_hashmap(&schemas, args.output);
     Ok(())
 }

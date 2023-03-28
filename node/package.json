@@ -1,0 +1,18 @@
+{
+  "name": "schema-map-to-schema",
+  "version": "1.0.0",
+  "description": "Turns an array of schemas into a single schema",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node --esm index.ts"
+  },
+  "author": "Shaun Hamilton",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.15.5",
+    "ts-node": "10.9.1",
+    "typescript": "5.0.2"
+  },
+  "type": "module"
+}

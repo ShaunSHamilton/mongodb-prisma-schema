@@ -17,6 +17,8 @@ const parseSchemaValues = (value: unknown) => {
     for (const x of value) {
       if (isObject(x)) {
         schemaValues.add(parseSchemaObject(x));
+      } else if(Array.isArray(x)) {
+        schemaValues.add([parseSchemaValues(x)]);
       } else {
         schemaValues.add(x);
       }

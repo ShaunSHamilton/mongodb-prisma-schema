@@ -38,8 +38,8 @@ describe("parse", () => {
         field2: ["String", "Int32", ["String"]],
       })
     ).toEqual({
-      field1: new Set(["String", []]),
-      field2: new Set(["String", "Int32", ["String"]]),
+      field1: new Set(["String", [new Set()]]),
+      field2: new Set(["String", "Int32", [new Set(["String"])]]),
     });
   });
 });

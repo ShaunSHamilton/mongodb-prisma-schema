@@ -2,8 +2,8 @@ import { writeFile } from "fs/promises";
 
 import { readFileSync } from "fs";
 
-import { parse } from "./parser";
-import { merge } from "./merger";
+import { parse } from "./parser.js";
+import { merge } from "./merger.js";
 
 const data = readFileSync("../schema-array.json", "utf8");
 // import schema_array from "../schema-array.json";

@@ -1,5 +1,5 @@
 import pkg from "lodash/fp.js";
-import { isObject } from "./utils";
+import { isObject } from "./utils.js";
 const { cloneDeep } = pkg;
 
 export const merge = (

@@ -31,5 +31,15 @@ describe("parse", () => {
       ]),
     });
   });
-
+  it("should handle objects with arrays", () => {
+    expect(
+      parse({
+        field1: ["String", []],
+        field2: ["String", "Int32", ["String"]],
+      })
+    ).toEqual({
+      field1: new Set(["String", []]),
+      field2: new Set(["String", "Int32", ["String"]]),
+    });
+  });
 });

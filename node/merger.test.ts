@@ -35,14 +35,14 @@ describe("merge", () => {
     expect(
       merge(
         {
-          field1: new Set(["String", ["Int32"]]),
+          field1: new Set(["String", [new Set("Int32")]]),
         },
         {
-          field1: new Set(["String", ["Int32"]]),
+          field1: new Set(["String", [new Set("Int32")]]),
         }
       )
     ).toEqual({
-      field1: new Set(["String", ["Int32"]]),
+      field1: new Set(["String", [new Set("Int32")]]),
     });
   })
   
@@ -53,24 +53,24 @@ describe("merge", () => {
           field1: new Set(["String", []]),
         },
         {
-          field1: new Set(["String", ["Int32"]]),
+          field1: new Set(["String", [new Set("Int32")]]),
         }
       )
     ).toEqual({
-      field1: new Set(["String", ["Int32"]]),
+      field1: new Set(["String", [new Set("Int32")]]),
     });
     
     expect(
       merge(
         {
-          field1: new Set(["String", ["Int32"]]),
+          field1: new Set(["String", [new Set("Int32")]]),
         },
         {
           field1: new Set(["String", []]),
         }
       )
     ).toEqual({
-      field1: new Set(["String", ["Int32"]]),
+      field1: new Set(["String", [new Set("Int32")]]),
     });
   })
 });

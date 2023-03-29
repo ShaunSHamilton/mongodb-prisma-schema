@@ -1,6 +1,6 @@
 import pkg from "lodash/fp.js";
 import { isObject } from "./utils.js";
-const { cloneDeep } = pkg;
+const { cloneDeep, isEqual } = pkg;
 
 export const merge = (
   schemaOne: Record<string, unknown>,
@@ -62,7 +62,7 @@ const mergeSchemaValues = (valueOne: unknown, valueTwo: unknown): unknown => {
 };
 
 const mergeSchemaArrays = (arrOne: unknown[], arrTwo: unknown[]): unknown[] => {
-  if (arrOne[0] == arrTwo[0]) {
+  if (isEqual(arrOne[0], arrTwo[0])) {
     return arrTwo;
   } else if (arrOne.length === 0) {
     return arrTwo;

@@ -119,10 +119,10 @@ function combine(result: SchemaValue, schema: SchemaValue): SchemaValue[] {
 
 // main();
 
-export const parse = (json: string): unknown => {
-  const raw = JSON.parse(json);
+export const parse = (obj: Record<string, unknown>): unknown => {
+  // const raw = JSON.parse(json);
   const parsed: Record<string, unknown> = {};
-  for (const [key, value] of Object.entries(raw)) {
+  for (const [key, value] of Object.entries(obj)) {
     parsed[key] = parseSchemaValues(value);
   }
   return parsed;

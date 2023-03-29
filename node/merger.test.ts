@@ -30,7 +30,7 @@ describe("merge", () => {
       field1: new Set(["String", { field2: new Set(["Int32", "Int64"]) }]),
     });
   });
-  
+
   it("should not duplicate array types", () => {
     expect(
       merge(
@@ -44,8 +44,8 @@ describe("merge", () => {
     ).toEqual({
       field1: new Set(["String", [new Set(["Int32"])]]),
     });
-  })
-  
+  });
+
   it("should replace empty array with typed arrays", () => {
     expect(
       merge(
@@ -59,7 +59,7 @@ describe("merge", () => {
     ).toEqual({
       field1: new Set(["String", [new Set(["Int32"])]]),
     });
-    
+
     expect(
       merge(
         {
@@ -72,9 +72,9 @@ describe("merge", () => {
     ).toEqual({
       field1: new Set(["String", [new Set(["Int32"])]]),
     });
-  })
-  
-  it("should combine arrays types", () => {
+  });
+
+  it("should combine simple array types", () => {
     expect(
       merge(
         {
@@ -87,5 +87,23 @@ describe("merge", () => {
     ).toEqual({
       field1: new Set(["String", [new Set(["Int32", "Int64"])]]),
     });
-  })
+  });
+
+  it("should combine complicated array types", () => {
+    const arrayTypes = new Set([{ timestamp: new Set(["Double"]) }, "Int32"]);
+    const moreArrayTypes = new Set([{ timestamp: new Set(["Double"]) }, "Int64"]);
+    const expectedArrayTypes = new Set([{ timestamp: new Set(["Double"]) }, "Int32", "Int64"]);
+    expect(
+      merge(
+        {
+          field1: new Set([[arrayTypes], "Int32"]),
+        },
+        {
+          field1: new Set([[moreArrayTypes]]),
+        }
+      )
+    ).toEqual({
+      field1: new Set([[expectedArrayTypes], "Int32"]),
+    });
+  });
 });

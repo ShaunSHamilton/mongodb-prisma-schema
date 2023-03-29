@@ -43,7 +43,6 @@ const mergeSchemaValues = (valueOne: unknown, valueTwo: unknown): unknown => {
     const originalArray = arrays[0];
     for (const x of valueTwo) {
       if (isObject(x) && originalObject) {
-        // @ts-ignore For now I'm being pretty loose with the types
         merged.add(mergeSchemaObjects(originalObject, x));
         merged.delete(originalObject);
       } else if (Array.isArray(x)) {
@@ -61,7 +60,28 @@ const mergeSchemaValues = (valueOne: unknown, valueTwo: unknown): unknown => {
   }
 };
 
-const mergeSchemaArrays = (arrOne: Set<unknown>[], arrTwo: Set<unknown>[]): Set<unknown>[] => {
+export const mergeSets = (
+  setOne: Set<unknown>,
+  setTwo: Set<unknown>
+): Set<unknown> => {
+  const set = new Set(setOne);
+  for (const x of setTwo) {
+    if (!deepIncludes(setOne, x)) set.add(x);
+  }
+  return set;
+};
+
+const deepIncludes = (set: Set<unknown>, value: unknown): boolean => {
+  for (const x of set) {
+    if (isEqual(x, value)) return true;
+  }
+  return false;
+};
+
+const mergeSchemaArrays = (
+  arrOne: Set<unknown>[],
+  arrTwo: Set<unknown>[]
+): Set<unknown>[] => {
   if (arrOne.length > 1 || arrTwo.length > 1) throw new Error("Invalid schema");
   if (isEqual(arrOne[0], arrTwo[0])) {
     return arrTwo;
@@ -70,11 +90,7 @@ const mergeSchemaArrays = (arrOne: Set<unknown>[], arrTwo: Set<unknown>[]): Set<
   } else if (arrTwo.length === 0) {
     return arrOne;
   } else {
-    const set = new Set(arrOne[0]);
-    for(const x of arrTwo[0]) {
-      set.add(x);
-    }
-    return [set];
+    return [mergeSets(arrOne[0], arrTwo[0])];
   }
 };
 

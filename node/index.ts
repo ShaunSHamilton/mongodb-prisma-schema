@@ -1,16 +1,20 @@
 import { writeFile } from "fs/promises";
-import { cloneDeep } from "lodash/fp";
+import pkg from "lodash/fp.js";
+const { cloneDeep } = pkg;
+import { readFileSync } from "fs";
+
+const data = readFileSync("../schema-array.json", "utf8");
 // import schema_array from "../schema-array.json";
 
-// const schemaArray = schema_array as unknown as Schema[];
+const schemaArray = JSON.parse(data);
 
-// async function main() {
-//   const combined_schema = combine_schemas(schemaArray);
-//   await writeFile(
-//     "combined-schema.json",
-//     JSON.stringify(combined_schema, null, 2)
-//   );
-// }
+async function main() {
+  const combined_schema = combine_schemas(schemaArray);
+  await writeFile(
+    "combined-schema.json",
+    JSON.stringify(combined_schema, null, 2)
+  );
+}
 
 /**
  * Recurse through the schema array and combine all the fields' values into a set
@@ -69,57 +73,9 @@ type Schema = { [key: string]: SchemaValue[] };
 // If key is missing in schema, add whole json value
 // If key is missing in json, add "Undefined" to schema
 
-function combine_schemas(json_array: Schema[]): Schema {
-  // Add first schema without "Undefined"s
-  const result: Schema = json_array[0];
-
-  // Skip first schema
-  for (const schema of json_array.slice(1)) {
-    for (const [key, value] of Object.entries(schema)) {
-      if (key in result) {
-        result[key] = combine(result[key], value);
-      } else {
-        result[key] = value;
-      }
-    }
-  }
-  return result;
-}
-
-function combine(result: SchemaValue, schema: SchemaValue): SchemaValue[] {
-  const schema_values: SchemaValue[] = [];
-  // if both are arrays, add all new values to the result
-  if (Array.isArray(result) && Array.isArray(schema)) {
-    schema_values.push(...result);
-    for (const value of schema) {
-      if (!schema_values.includes(value)) {
-        schema_values.push(value);
-      }
-    }
-  }
-  if (typeof result === "object" && typeof schema === "object") {
-    for (const [key, value] of Object.entries(result)) {
-      if (key in schema) {
-        // @ts-ignore
-        schema_values.push({ [key]: combine(value, schema[key]) });
-      } else {
-        schema_values.push({ [key]: value });
-      }
-    }
-  }
-  if (typeof result === "string" && typeof schema === "string") {
-    if (result !== schema) {
-      schema_values.push(result, schema);
-    } else {
-      schema_values.push(result);
-    }
-  }
-  return schema_values;
-}
-
-// main();
-
-export const parse = (obj: Record<string, unknown>): unknown => {
+export const parse = (
+  obj: Record<string, unknown>
+): Record<string, unknown> => {
   // const raw = JSON.parse(json);
   const parsed: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(obj)) {
@@ -148,6 +104,7 @@ const parseSchemaObject = (obj: Record<string, unknown>): unknown => {
     if (Array.isArray(value)) {
       parsed[key] = parseSchemaValues(value);
     } else {
+      console.log(obj);
       throw new Error("Invalid schema");
     }
   }
@@ -211,3 +168,18 @@ const mergeSchemaObjects = (
   }
   return merged;
 };
+
+function combine_schemas(json_array: Schema[]): Record<string, unknown> {
+  // Add first schema without "Undefined"s
+  let result: Record<string, unknown> = json_array[0];
+
+  const parsed = json_array.map(parse);
+
+  // Skip first schema
+  for (const schema of parsed.slice(1)) {
+    result = merge(result, schema);
+  }
+  return result;
+}
+
+main();

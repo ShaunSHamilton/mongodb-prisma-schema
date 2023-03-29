@@ -32,15 +32,23 @@ const mergeSchemaValues = (valueOne: unknown, valueTwo: unknown): unknown => {
   if (valueOne instanceof Set && valueTwo instanceof Set) {
     const merged = new Set(valueOne);
     const objects = [...merged.values()].filter(isObject);
+    const arrays = [...merged.values()].filter(Array.isArray);
     if (objects.length > 1) {
       throw new Error("Each schema value can only contain one object");
     }
+    if (arrays.length > 1) {
+      throw new Error("Each schema value can only contain one array");
+    }
     const originalObject = objects[0];
+    const originalArray = arrays[0];
     for (const x of valueTwo) {
       if (isObject(x) && originalObject) {
         // @ts-ignore For now I'm being pretty loose with the types
         merged.add(mergeSchemaObjects(originalObject, x));
         merged.delete(originalObject);
+      } else if (Array.isArray(x)) {
+        merged.delete(originalArray);
+        merged.add(mergeSchemaArrays(originalArray, x));
       } else {
         merged.add(x);
       }
@@ -50,6 +58,20 @@ const mergeSchemaValues = (valueOne: unknown, valueTwo: unknown): unknown => {
     console.log("valueOne", valueOne);
     console.log("valueTwo", valueTwo);
     throw new Error("Schema values are not of type Set");
+  }
+};
+
+const mergeSchemaArrays = (arrOne: unknown[], arrTwo: unknown[]): unknown[] => {
+  if (arrOne[0] == arrTwo[0]) {
+    return arrTwo;
+  } else if (arrOne.length === 0) {
+    return arrTwo;
+  } else if (arrTwo.length === 0) {
+    return arrOne;
+  } else {
+    console.log("arrOne", arrOne);
+    console.log("arrTwo", arrTwo);
+    throw new Error("Schema arrays are not of the same type");
   }
 };
 

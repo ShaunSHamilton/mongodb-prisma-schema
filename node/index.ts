@@ -4,14 +4,15 @@ import { readFileSync } from "fs";
 
 import { parse } from "./parser.js";
 import { merge } from "./merger.js";
+import { inspect } from "util";
 
 const data = readFileSync("../schema-array.json", "utf8");
-// import schema_array from "../schema-array.json";
 
 const schemaArray = JSON.parse(data);
 
 async function main() {
   const combined_schema = combine_schemas(schemaArray);
+  console.log(inspect(combined_schema, { depth: null, colors: true }));
   await writeFile(
     "combined-schema.json",
     JSON.stringify(combined_schema, null, 2)
@@ -77,10 +78,9 @@ type Schema = { [key: string]: SchemaValue[] };
 
 function combine_schemas(json_array: Schema[]): Record<string, unknown> {
   // Add first schema without "Undefined"s
-  let result: Record<string, unknown> = json_array[0];
 
   const parsed = json_array.map(parse);
-
+  let result: Record<string, unknown> = parsed[0];
   // Skip first schema
   for (const schema of parsed.slice(1)) {
     result = merge(result, schema);

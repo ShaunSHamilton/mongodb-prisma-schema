@@ -1,18 +1,15 @@
 import { writeFile } from "fs/promises";
-const SCHEMA_ARRAY_PATH = "../schema-array.json";
+// import schema_array from "../schema-array.json";
 
-async function main() {
-  const schema_array = (
-    await import(SCHEMA_ARRAY_PATH, {
-      assert: { type: "json" },
-    })
-  ).default;
-  const combined_schema = combine_schemas(schema_array);
-  await writeFile(
-    "combined-schema.json",
-    JSON.stringify(combined_schema, null, 2)
-  );
-}
+// const schemaArray = schema_array as unknown as Schema[];
+
+// async function main() {
+//   const combined_schema = combine_schemas(schemaArray);
+//   await writeFile(
+//     "combined-schema.json",
+//     JSON.stringify(combined_schema, null, 2)
+//   );
+// }
 
 /**
  * Recurse through the schema array and combine all the fields' values into a set
@@ -79,7 +76,7 @@ function combine_schemas(json_array: Schema[]): Schema {
   for (const schema of json_array.slice(1)) {
     for (const [key, value] of Object.entries(schema)) {
       if (key in result) {
-        result[key] = compare(result[key], value);
+        result[key] = combine(result[key], value);
       } else {
         result[key] = value;
       }
@@ -88,13 +85,14 @@ function combine_schemas(json_array: Schema[]): Schema {
   return result;
 }
 
-function compare(result: SchemaValue, schema: SchemaValue): SchemaValue[] {
-  const schema_value: SchemaValue[] = [];
+function combine(result: SchemaValue, schema: SchemaValue): SchemaValue[] {
+  const schema_values: SchemaValue[] = [];
+  // if both are arrays, add all new values to the result
   if (Array.isArray(result) && Array.isArray(schema)) {
-    schema_value.push(...result);
+    schema_values.push(...result);
     for (const value of schema) {
-      if (!schema_value.includes(value)) {
-        schema_value.push(value);
+      if (!schema_values.includes(value)) {
+        schema_values.push(value);
       }
     }
   }
@@ -102,20 +100,56 @@ function compare(result: SchemaValue, schema: SchemaValue): SchemaValue[] {
     for (const [key, value] of Object.entries(result)) {
       if (key in schema) {
         // @ts-ignore
-        schema_value.push({ [key]: compare(value, schema[key]) });
+        schema_values.push({ [key]: combine(value, schema[key]) });
       } else {
-        schema_value.push({ [key]: value });
+        schema_values.push({ [key]: value });
       }
     }
   }
   if (typeof result === "string" && typeof schema === "string") {
     if (result !== schema) {
-      schema_value.push(result, schema);
+      schema_values.push(result, schema);
     } else {
-      schema_value.push(result);
+      schema_values.push(result);
     }
   }
-  return schema_value;
+  return schema_values;
 }
 
-await main();
+// main();
+
+export const parse = (json: string): unknown => {
+  const raw = JSON.parse(json);
+  const parsed: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(raw)) {
+    parsed[key] = parseSchemaValues(value);
+  }
+  return parsed;
+};
+
+const parseSchemaValues = (value: unknown) => {
+  const schemaValues = new Set();
+  if (Array.isArray(value)) {
+    for (const x of value) {
+      if (typeof x === "object") {
+        schemaValues.add(parseSchemaObject(x));
+      } else {
+        schemaValues.add(x);
+      }
+    }
+  }
+  return schemaValues;
+};
+
+const parseSchemaObject = (obj: Record<string, unknown>): unknown => {
+  const parsed: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(obj)) {
+    if (Array.isArray(value)) {
+      parsed[key] = parseSchemaValues(value);
+    } else {
+      throw new Error("Invalid schema");
+    }
+  }
+  return parsed;
+};
+

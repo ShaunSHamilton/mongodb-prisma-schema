@@ -30,4 +30,19 @@ describe("merge", () => {
       field1: new Set(["String", { field2: new Set(["Int32", "Int64"]) }]),
     });
   });
+  
+  it("should not duplicate array types", () => {
+    expect(
+      merge(
+        {
+          field1: new Set(["String", ["Int32"]]),
+        },
+        {
+          field1: new Set(["String", ["Int32"]]),
+        }
+      )
+    ).toEqual({
+      field1: new Set(["String", ["Int32"]]),
+    });
+  })
 });

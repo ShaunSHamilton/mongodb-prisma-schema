@@ -63,14 +63,29 @@ describe("merge", () => {
     expect(
       merge(
         {
-          field1: new Set(["String", [new Set("Int32")]]),
+          field1: new Set(["String", [new Set(["Int32"])]]),
         },
         {
           field1: new Set(["String", []]),
         }
       )
     ).toEqual({
-      field1: new Set(["String", [new Set("Int32")]]),
+      field1: new Set(["String", [new Set(["Int32"])]]),
+    });
+  })
+  
+  it("should combine arrays types", () => {
+    expect(
+      merge(
+        {
+          field1: new Set(["String", [new Set(["Int32"])]]),
+        },
+        {
+          field1: new Set(["String", [new Set(["Int64"])]]),
+        }
+      )
+    ).toEqual({
+      field1: new Set(["String", [new Set(["Int32", "Int64"])]]),
     });
   })
 });

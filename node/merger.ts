@@ -61,7 +61,8 @@ const mergeSchemaValues = (valueOne: unknown, valueTwo: unknown): unknown => {
   }
 };
 
-const mergeSchemaArrays = (arrOne: unknown[], arrTwo: unknown[]): unknown[] => {
+const mergeSchemaArrays = (arrOne: Set<unknown>[], arrTwo: Set<unknown>[]): Set<unknown>[] => {
+  if (arrOne.length > 1 || arrTwo.length > 1) throw new Error("Invalid schema");
   if (isEqual(arrOne[0], arrTwo[0])) {
     return arrTwo;
   } else if (arrOne.length === 0) {
@@ -69,9 +70,11 @@ const mergeSchemaArrays = (arrOne: unknown[], arrTwo: unknown[]): unknown[] => {
   } else if (arrTwo.length === 0) {
     return arrOne;
   } else {
-    console.log("arrOne", arrOne);
-    console.log("arrTwo", arrTwo);
-    throw new Error("Schema arrays are not of the same type");
+    const set = new Set(arrOne[0]);
+    for(const x of arrTwo[0]) {
+      set.add(x);
+    }
+    return [set];
   }
 };
 

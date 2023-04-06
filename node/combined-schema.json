@@ -435,17 +435,17 @@
       }
     ]
   },
-  currentChallengeId: Set(1) { 'String' },
+  currentChallengeId: Set(2) { 'String', 'Undefined' },
   email: Set(1) { 'String' },
-  emailAuthLinkTTL: Set(2) { 'Null', 'DateTime' },
+  emailAuthLinkTTL: Set(3) { 'Null', 'DateTime', 'Undefined' },
   emailVerified: Set(1) { 'Boolean' },
-  emailVerifyTTL: Set(2) { 'Null', 'DateTime' },
+  emailVerifyTTL: Set(3) { 'Null', 'DateTime', 'Undefined' },
   externalId: Set(1) { 'String' },
-  github: Set(1) { 'Null' },
+  github: Set(2) { 'Null', 'Undefined' },
   isDonating: Set(1) { 'Boolean' },
-  isHonest: Set(1) { 'Boolean' },
-  isRespWebDesignCert: Set(1) { 'Boolean' },
-  linkedin: Set(2) { 'Null', 'String' },
+  isHonest: Set(2) { 'Boolean', 'Undefined' },
+  isRespWebDesignCert: Set(2) { 'Boolean', 'Undefined' },
+  linkedin: Set(3) { 'Null', 'String', 'Undefined' },
   location: Set(2) { 'String', 'Null' },
   name: Set(2) { 'String', 'Null' },
   picture: Set(1) { 'String' },
@@ -462,20 +462,22 @@
       }
     ]
   },
-  profileUI: Set(1) {
+  profileUI: Set(2) {
+    'Undefined',
     {
-      isLocked: Set(1) { 'Boolean' },
-      showAbout: Set(1) { 'Boolean' },
-      showCerts: Set(1) { 'Boolean' },
-      showHeatMap: Set(1) { 'Boolean' },
-      showLocation: Set(1) { 'Boolean' },
-      showName: Set(1) { 'Boolean' },
-      showPoints: Set(1) { 'Boolean' },
-      showPortfolio: Set(1) { 'Boolean' },
-      showTimeLine: Set(1) { 'Boolean' },
-      showDonation: Set(1) { 'Boolean' },
-      __cachedRelations: Set(1) { {} },
-      __data: Set(1) {
+      isLocked: Set(2) { 'Boolean', 'Undefined' },
+      showAbout: Set(2) { 'Boolean', 'Undefined' },
+      showCerts: Set(2) { 'Boolean', 'Undefined' },
+      showHeatMap: Set(2) { 'Boolean', 'Undefined' },
+      showLocation: Set(2) { 'Boolean', 'Undefined' },
+      showName: Set(2) { 'Boolean', 'Undefined' },
+      showPoints: Set(2) { 'Boolean', 'Undefined' },
+      showPortfolio: Set(2) { 'Boolean', 'Undefined' },
+      showTimeLine: Set(2) { 'Boolean', 'Undefined' },
+      showDonation: Set(2) { 'Boolean', 'Undefined' },
+      __cachedRelations: Set(2) { 'Undefined', {} },
+      __data: Set(2) {
+        'Undefined',
         {
           __persisted: Set(1) { 'Boolean' },
           __strict: Set(1) { 'Boolean' },
@@ -488,11 +490,11 @@
           showPoints: Set(1) { 'Boolean' },
           showPortfolio: Set(1) { 'Boolean' },
           showTimeLine: Set(1) { 'Boolean' },
-          showDonation: Set(1) { 'Boolean' }
+          showDonation: Set(2) { 'Boolean', 'Undefined' }
         }
       },
-      __persisted: Set(1) { 'Boolean' },
-      __strict: Set(1) { 'Boolean' }
+      __persisted: Set(2) { 'Boolean', 'Undefined' },
+      __strict: Set(2) { 'Boolean', 'Undefined' }
     }
   },
   progressTimestamps: Set(1) {
@@ -506,40 +508,41 @@
     ]
   },
   sendQuincyEmail: Set(1) { 'Boolean' },
-  twitter: Set(2) { 'Null', 'String' },
+  twitter: Set(3) { 'Null', 'String', 'Undefined' },
   unsubscribeId: Set(1) { 'String' },
   username: Set(1) { 'String' },
-  website: Set(1) { 'String' },
-  githubProfile: Set(1) { 'String' },
-  isBackEndCert: Set(1) { 'Boolean' },
-  isBanned: Set(1) { 'Boolean' },
-  isCheater: Set(1) { 'Boolean' },
-  isFullStackCert: Set(1) { 'Boolean' },
-  isGithub: Set(1) { 'Boolean' },
-  isLinkedIn: Set(1) { 'Boolean' },
-  isTwitter: Set(1) { 'Boolean' },
-  isWebsite: Set(1) { 'Boolean' },
-  password: Set(1) { 'String' },
-  theme: Set(1) { 'String' },
-  newEmail: Set(2) { 'Null', 'String' },
-  isJsAlgoDataStructCert: Set(1) { 'Boolean' },
-  donationEmails: Set(1) { [ Set(1) { 'String' } ] },
-  timezone: Set(1) { 'String' },
-  isFrontEndLibsCert: Set(1) { 'Boolean' },
-  isFrontEndCert: Set(1) { 'Boolean' },
-  is2018DataVisCert: Set(1) { 'Boolean' },
-  is2018FullStackCert: Set(1) { 'Boolean' },
-  isApisMicroservicesCert: Set(1) { 'Boolean' },
-  isDataVisCert: Set(1) { 'Boolean' },
-  isInfosecQaCert: Set(1) { 'Boolean' },
-  partiallyCompletedChallenges: Set(1) { [ Set(0) {} ] },
-  sound: Set(1) { 'Boolean' },
-  yearsTopContributor: Set(1) { [ Set(1) { 'String' } ] },
-  keyboardShortcuts: Set(1) { 'Boolean' },
-  usernameDisplay: Set(1) { 'String' },
-  isDataAnalysisPyCertV7: Set(1) { 'Boolean' },
-  needsModeration: Set(1) { 'Boolean' },
-  savedChallenges: Set(1) {
+  website: Set(2) { 'String', 'Undefined' },
+  githubProfile: Set(2) { 'String', 'Undefined' },
+  isBackEndCert: Set(2) { 'Boolean', 'Undefined' },
+  isBanned: Set(2) { 'Boolean', 'Undefined' },
+  isCheater: Set(2) { 'Boolean', 'Undefined' },
+  isFullStackCert: Set(2) { 'Boolean', 'Undefined' },
+  isGithub: Set(2) { 'Boolean', 'Undefined' },
+  isLinkedIn: Set(2) { 'Boolean', 'Undefined' },
+  isTwitter: Set(2) { 'Boolean', 'Undefined' },
+  isWebsite: Set(2) { 'Boolean', 'Undefined' },
+  password: Set(2) { 'String', 'Undefined' },
+  theme: Set(2) { 'String', 'Undefined' },
+  newEmail: Set(3) { 'Null', 'Undefined', 'String' },
+  isJsAlgoDataStructCert: Set(2) { 'Boolean', 'Undefined' },
+  donationEmails: Set(2) { 'Undefined', [ Set(1) { 'String' } ] },
+  timezone: Set(2) { 'String', 'Undefined' },
+  isFrontEndLibsCert: Set(2) { 'Boolean', 'Undefined' },
+  isFrontEndCert: Set(2) { 'Boolean', 'Undefined' },
+  is2018DataVisCert: Set(2) { 'Boolean', 'Undefined' },
+  is2018FullStackCert: Set(2) { 'Boolean', 'Undefined' },
+  isApisMicroservicesCert: Set(2) { 'Boolean', 'Undefined' },
+  isDataVisCert: Set(2) { 'Boolean', 'Undefined' },
+  isInfosecQaCert: Set(2) { 'Boolean', 'Undefined' },
+  partiallyCompletedChallenges: Set(2) { 'Undefined', [ Set(0) {} ] },
+  sound: Set(2) { 'Boolean', 'Undefined' },
+  yearsTopContributor: Set(2) { 'Undefined', [ Set(1) { 'String' } ] },
+  keyboardShortcuts: Set(2) { 'Boolean', 'Undefined' },
+  usernameDisplay: Set(2) { 'String', 'Undefined' },
+  isDataAnalysisPyCertV7: Set(2) { 'Boolean', 'Undefined' },
+  needsModeration: Set(2) { 'Boolean', 'Undefined' },
+  savedChallenges: Set(2) {
+    'Undefined',
     [
       Set(1) {
         {
@@ -562,14 +565,15 @@
       }
     ]
   },
-  isSciCompPyCertV7: Set(1) { 'Boolean' },
-  isInfosecCertV7: Set(1) { 'Boolean' },
-  isMachineLearningPyCertV7: Set(1) { 'Boolean' },
-  isQaCertV7: Set(1) { 'Boolean' },
-  isRelationalDatabaseCertV8: Set(1) { 'Boolean' },
-  verificationToken: Set(1) { 'String' },
-  badges: Set(1) {
+  isSciCompPyCertV7: Set(2) { 'Boolean', 'Undefined' },
+  isInfosecCertV7: Set(2) { 'Boolean', 'Undefined' },
+  isMachineLearningPyCertV7: Set(2) { 'Boolean', 'Undefined' },
+  isQaCertV7: Set(2) { 'Boolean', 'Undefined' },
+  isRelationalDatabaseCertV8: Set(2) { 'Boolean', 'Undefined' },
+  verificationToken: Set(2) { 'String', 'Undefined' },
+  badges: Set(2) {
+    'Undefined',
     { coreTeam: Set(1) { [ Set(0) {} ] } }
   },
-  rand: Set(1) { 'Double' }
+  rand: Set(2) { 'Double', 'Undefined' }
 }

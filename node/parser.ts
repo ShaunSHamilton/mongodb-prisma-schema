@@ -2,9 +2,9 @@ import { isObject } from "./utils.js";
 
 export const parse = (
   obj: Record<string, unknown>
-): Record<string, unknown> => {
+): Record<string, Set<unknown>> => {
   // const raw = JSON.parse(json);
-  const parsed: Record<string, unknown> = {};
+  const parsed: Record<string,  Set<unknown>> = {};
   for (const [key, value] of Object.entries(obj)) {
     parsed[key] = parseSchemaValues(value);
   }

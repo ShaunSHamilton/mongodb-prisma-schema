@@ -2,34 +2,16 @@ import pkg from "lodash/fp.js";
 import { isObject } from "./utils.js";
 const { cloneDeep, isEqual } = pkg;
 
-export const merge = (
-  schemaOne: Record<string, unknown>,
-  schemaTwo: Record<string, unknown>
-): Record<string, unknown> => {
-  const merged: Record<string, unknown> = cloneDeep(schemaOne);
-
-  for (const [key, value] of Object.entries(schemaTwo)) {
-    if (key in merged) {
-      try {
-        merged[key] = mergeSchemaValues(merged[key], value);
-      } catch (e) {
-        console.log("Error merging schemas");
-        console.log("Schema 1:");
-        console.log(schemaOne);
-        console.log("Schema 2:");
-        console.log(schemaTwo);
-        console.log(e);
-        throw e;
-      }
-    } else {
-      merged[key] = value;
-    }
-  }
-  return merged;
-};
-
-const mergeSchemaValues = (valueOne: unknown, valueTwo: unknown): unknown => {
-  if (valueOne instanceof Set && valueTwo instanceof Set) {
+const mergeSchemaValues = (valueOne: unknown, valueTwo: unknown): Set<unknown> => {
+  if (valueOne === undefined && valueTwo instanceof Set) {
+    const merged = new Set(valueTwo);
+    merged.add("Undefined");
+    return merged;
+  } else if (valueOne instanceof Set && valueTwo === undefined) {
+    const merged = new Set(valueOne);
+    merged.add("Undefined");
+    return merged;
+  } else if (valueOne instanceof Set && valueTwo instanceof Set) {
     const merged = new Set(valueOne);
     const objects = [...merged.values()].filter(isObject);
     const arrays = [...merged.values()].filter(Array.isArray);
@@ -56,7 +38,7 @@ const mergeSchemaValues = (valueOne: unknown, valueTwo: unknown): unknown => {
   } else {
     console.log("valueOne", valueOne);
     console.log("valueTwo", valueTwo);
-    throw new Error("Schema values are not of type Set");
+    throw new Error("Neither Schema value is a set");
   }
 };
 
@@ -95,17 +77,25 @@ const mergeSchemaArrays = (
 };
 
 const mergeSchemaObjects = (
-  objOne: Record<string, unknown> | undefined,
-  objTwo: Record<string, unknown>
-): Record<string, unknown> => {
-  const merged: Record<string, unknown> = cloneDeep(objTwo);
-  if (!objOne) return merged;
-  for (const [key, value] of Object.entries(objOne)) {
-    if (key in merged) {
-      merged[key] = mergeSchemaValues(merged[key], value);
-    } else {
-      merged[key] = value;
+  objOne: Record<string, Set<unknown>>,
+  objTwo: Record<string, Set<unknown>>
+): Record<string, Set<unknown>> => {
+  const allKeys = new Set([...Object.keys(objOne), ...Object.keys(objTwo)]);
+  const merged: Record<string, Set<unknown>> = {};
+  for(const key of allKeys) {
+    if(key in objOne && key in objTwo) {
+      merged[key] = mergeSchemaValues(objOne[key], objTwo[key]);
+    } else if(key in objOne) {
+      const typeSet = new Set(objOne[key]);
+      typeSet.add("Undefined")
+      merged[key] = typeSet
+    } else if(key in objTwo) {
+      const typeSet = new Set(objTwo[key]);
+      typeSet.add("Undefined")
+      merged[key] = typeSet
     }
   }
   return merged;
 };
+
+export const merge = mergeSchemaObjects;

@@ -91,8 +91,15 @@ describe("merge", () => {
 
   it("should combine complicated array types", () => {
     const arrayTypes = new Set([{ timestamp: new Set(["Double"]) }, "Int32"]);
-    const moreArrayTypes = new Set([{ timestamp: new Set(["Double"]) }, "Int64"]);
-    const expectedArrayTypes = new Set([{ timestamp: new Set(["Double"]) }, "Int32", "Int64"]);
+    const moreArrayTypes = new Set([
+      { timestamp: new Set(["Double"]) },
+      "Int64",
+    ]);
+    const expectedArrayTypes = new Set([
+      { timestamp: new Set(["Double"]) },
+      "Int32",
+      "Int64",
+    ]);
     expect(
       merge(
         {
@@ -104,6 +111,25 @@ describe("merge", () => {
       )
     ).toEqual({
       field1: new Set([[expectedArrayTypes], "Int32"]),
+    });
+  });
+
+  it("should add Undefined to the types set if a field is missing in either schema", () => {
+    expect(
+      merge(
+        {
+          field1: new Set(["String", "Int32"]),
+          field2: new Set(["String", "Int64"]),
+        },
+        {
+          field2: new Set(["String", "Int64"]),
+          field3: new Set(["Another"])
+        }
+      )
+    ).toEqual({
+      field1: new Set(["String", "Int32", "Undefined"]),
+      field2: new Set(["String", "Int64"]),
+      field3: new Set(["Another", "Undefined"])
     });
   });
 });

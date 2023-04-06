@@ -15,7 +15,7 @@ async function main() {
   console.log(inspect(combined_schema, { depth: null, colors: true }));
   await writeFile(
     "combined-schema.json",
-    JSON.stringify(combined_schema, null, 2)
+    inspect(combined_schema, { depth: null })
   );
 }
 
@@ -80,7 +80,7 @@ function combine_schemas(json_array: Schema[]): Record<string, unknown> {
   // Add first schema without "Undefined"s
 
   const parsed = json_array.map(parse);
-  let result: Record<string, unknown> = parsed[0];
+  let result: Record<string, Set<unknown>> = parsed[0];
   // Skip first schema
   for (const schema of parsed.slice(1)) {
     result = merge(result, schema);

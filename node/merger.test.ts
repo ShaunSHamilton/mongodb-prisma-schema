@@ -123,13 +123,30 @@ describe("merge", () => {
         },
         {
           field2: new Set(["String", "Int64"]),
-          field3: new Set(["Another"])
+          field3: new Set(["Another"]),
         }
       )
     ).toEqual({
       field1: new Set(["String", "Int32", "Undefined"]),
       field2: new Set(["String", "Int64"]),
-      field3: new Set(["Another", "Undefined"])
+      field3: new Set(["Another", "Undefined"]),
+    });
+  });
+
+  it("should add Undefined when one schema has an array and the other nothing", () => {
+    const arrayTypes  = new Set(["String", "Int64"])
+    expect(
+      merge(
+        {
+          field1: new Set(["String", "Int32"]),
+        },
+        {
+          field2: new Set([[arrayTypes]]),
+        }
+      )
+    ).toEqual({
+      field1: new Set(["String", "Int32", "Undefined"]),
+      field2: new Set([[arrayTypes], "Undefined"]),
     });
   });
 });

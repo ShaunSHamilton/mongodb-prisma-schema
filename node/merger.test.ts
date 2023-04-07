@@ -1,4 +1,46 @@
+import { readFileSync } from "fs";
 import { merge } from "./merger";
+
+describe("combined-schema", () => {
+  let csFile;
+  let combinedSchema: Record<string, unknown>;
+  beforeAll(() => {
+    csFile = readFileSync("./combined-schema.json", "utf-8");
+
+    combinedSchema = JSON.parse(csFile);
+  });
+  it("should have 'Undefined' for correct root fields only", () => {
+    const commonRootFields = [
+      "_id",
+      "unsubscribeId",
+      "sendQuincyEmail",
+      "progressTimestamps",
+      "portfolio",
+      "picture",
+      "location",
+      "externalId",
+      "emailVerified",
+      "email",
+      "completedChallenges",
+      "acceptedPrivacyTerms",
+      "about",
+      "isDonating",
+      "name",
+      "username",
+    ];
+    for (const [key, v] of Object.entries(combinedSchema)) {
+      if (commonRootFields.includes(key)) {
+        expect(v).not.toContain("Undefined");
+      } else {
+        expect(v).toContain("Undefined");
+      }
+    }
+    for (const key of commonRootFields) {
+      const v = combinedSchema[key];
+      expect(v).not.toBeUndefined();
+    }
+  });
+});
 
 describe("merge", () => {
   it("should merge two simple schemas", () => {
@@ -134,7 +176,7 @@ describe("merge", () => {
   });
 
   it("should add Undefined when one schema has an array and the other nothing", () => {
-    const arrayTypes  = new Set(["String", "Int64"])
+    const arrayTypes = new Set(["String", "Int64"]);
     expect(
       merge(
         {

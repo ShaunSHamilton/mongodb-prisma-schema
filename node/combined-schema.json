@@ -1,579 +1,569 @@
 {
-  _id: Set(1) { 'ObjectId' },
-  about: Set(1) { 'String' },
-  acceptedPrivacyTerms: Set(1) { 'Boolean' },
-  completedChallenges: Set(1) {
+  "_id": ["ObjectId"],
+  "about": ["String"],
+  "acceptedPrivacyTerms": ["Boolean"],
+  "completedChallenges": [
     [
-      Set(28) {
-        { completedDate: Set(1) { 'Double' }, id: Set(1) { 'String' } },
+      [
+        { "completedDate": ["Double"], "id": ["String"] },
         {
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) { [ Set(0) {} ] },
-          id: Set(1) { 'String' }
+          "completedDate": ["Double"],
+          "files": [[[]]],
+          "id": ["String"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) { [ Set(0) {} ] },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'String' }
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "files": [[[]]],
+          "id": ["String"],
+          "solution": ["String"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) { [ Set(0) {} ] },
-          id: Set(1) { 'String' }
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "files": [[[]]],
+          "id": ["String"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'String' }
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "id": ["String"],
+          "solution": ["String"]
         },
         {
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) {
+          "completedDate": ["Double"],
+          "files": [
             [
-              Set(1) {
+              [
                 {
-                  __cachedRelations: Set(1) { {} },
-                  __data: Set(1) {
+                  "__cachedRelations": [{}],
+                  "__data": [
                     {
-                      __dataSource: Set(1) { 'Null' },
-                      __persisted: Set(1) { 'Boolean' },
-                      __strict: Set(1) { 'Boolean' },
-                      contents: Set(1) { 'String' },
-                      ext: Set(1) { 'String' },
-                      key: Set(1) { 'String' },
-                      name: Set(1) { 'String' },
-                      path: Set(1) { 'String' }
+                      "__dataSource": ["Null"],
+                      "__persisted": ["Boolean"],
+                      "__strict": ["Boolean"],
+                      "contents": ["String"],
+                      "ext": ["String"],
+                      "key": ["String"],
+                      "name": ["String"],
+                      "path": ["String"]
                     }
-                  },
-                  __dataSource: Set(1) { 'Null' },
-                  __persisted: Set(1) { 'Boolean' },
-                  __strict: Set(1) { 'Boolean' },
-                  contents: Set(1) { 'String' },
-                  ext: Set(1) { 'String' },
-                  key: Set(1) { 'String' },
-                  name: Set(1) { 'String' },
-                  path: Set(1) { 'String' }
+                  ],
+                  "__dataSource": ["Null"],
+                  "__persisted": ["Boolean"],
+                  "__strict": ["Boolean"],
+                  "contents": ["String"],
+                  "ext": ["String"],
+                  "key": ["String"],
+                  "name": ["String"],
+                  "path": ["String"]
                 }
-              }
+              ]
             ]
-          },
-          id: Set(1) { 'String' }
+          ],
+          "id": ["String"]
         },
         {
-          challengeType: Set(1) { 'Null' },
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) { [ Set(0) {} ] },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'Null' }
+          "challengeType": ["Null"],
+          "completedDate": ["Double"],
+          "files": [[[]]],
+          "id": ["String"],
+          "solution": ["Null"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) { [ Set(0) {} ] },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'Null' }
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "files": [[[]]],
+          "id": ["String"],
+          "solution": ["Null"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) { [ Set(0) {} ] },
-          githubLink: Set(1) { 'String' },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'String' }
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "files": [[[]]],
+          "githubLink": ["String"],
+          "id": ["String"],
+          "solution": ["String"]
         },
         {
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) { [ Set(0) {} ] },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'String' }
+          "completedDate": ["Double"],
+          "files": [[[]]],
+          "id": ["String"],
+          "solution": ["String"]
         },
         {
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) {
+          "completedDate": ["Double"],
+          "files": [
             [
-              Set(1) {
+              [
                 {
-                  __cachedRelations: Set(1) { {} },
-                  __data: Set(1) {
+                  "__cachedRelations": [{}],
+                  "__data": [
                     {
-                      contents: Set(1) { 'String' },
-                      ext: Set(1) { 'String' },
-                      key: Set(1) { 'String' },
-                      name: Set(1) { 'String' },
-                      path: Set(1) { 'String' }
+                      "contents": ["String"],
+                      "ext": ["String"],
+                      "key": ["String"],
+                      "name": ["String"],
+                      "path": ["String"]
                     }
-                  },
-                  __dataSource: Set(1) { 'Null' },
-                  __persisted: Set(1) { 'Boolean' },
-                  __strict: Set(1) { 'Boolean' },
-                  contents: Set(1) { 'String' },
-                  ext: Set(1) { 'String' },
-                  key: Set(1) { 'String' },
-                  name: Set(1) { 'String' },
-                  path: Set(1) { 'String' }
+                  ],
+                  "__dataSource": ["Null"],
+                  "__persisted": ["Boolean"],
+                  "__strict": ["Boolean"],
+                  "contents": ["String"],
+                  "ext": ["String"],
+                  "key": ["String"],
+                  "name": ["String"],
+                  "path": ["String"]
                 }
-              }
+              ]
             ]
-          },
-          id: Set(1) { 'String' }
+          ],
+          "id": ["String"]
         },
         {
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) {
+          "completedDate": ["Double"],
+          "files": [
             [
-              Set(1) {
+              [
                 {
-                  contents: Set(1) { 'String' },
-                  ext: Set(1) { 'String' },
-                  key: Set(1) { 'String' },
-                  name: Set(1) { 'String' },
-                  path: Set(1) { 'String' }
+                  "contents": ["String"],
+                  "ext": ["String"],
+                  "key": ["String"],
+                  "name": ["String"],
+                  "path": ["String"]
                 }
-              }
+              ]
             ]
-          },
-          id: Set(1) { 'String' }
+          ],
+          "id": ["String"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'DateTime' },
-          id: Set(1) { 'String' }
+          "challengeType": ["Int32"],
+          "completedDate": ["DateTime"],
+          "id": ["String"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) {
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "files": [
             [
-              Set(1) {
+              [
                 {
-                  contents: Set(1) { 'String' },
-                  ext: Set(1) { 'String' },
-                  key: Set(1) { 'String' },
-                  name: Set(1) { 'String' }
+                  "contents": ["String"],
+                  "ext": ["String"],
+                  "key": ["String"],
+                  "name": ["String"]
                 }
-              }
+              ]
             ]
-          },
-          id: Set(1) { 'String' }
+          ],
+          "id": ["String"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) {
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "files": [
             [
-              Set(1) {
+              [
                 {
-                  contents: Set(1) { 'String' },
-                  ext: Set(1) { 'String' },
-                  key: Set(1) { 'String' },
-                  name: Set(1) { 'String' }
+                  "contents": ["String"],
+                  "ext": ["String"],
+                  "key": ["String"],
+                  "name": ["String"]
                 }
-              }
+              ]
             ]
-          },
-          id: Set(1) { 'String' },
-          isManuallyApproved: Set(1) { 'Boolean' }
+          ],
+          "id": ["String"],
+          "isManuallyApproved": ["Boolean"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          id: Set(1) { 'String' }
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "id": ["String"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          githubLink: Set(1) { 'String' },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'String' }
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "githubLink": ["String"],
+          "id": ["String"],
+          "solution": ["String"]
         },
         {
-          completedDate: Set(1) { 'Double' },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'String' }
+          "completedDate": ["Double"],
+          "id": ["String"],
+          "solution": ["String"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) {
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "files": [
             [
-              Set(1) {
+              [
                 {
-                  __cachedRelations: Set(1) { {} },
-                  __data: Set(1) {
+                  "__cachedRelations": [{}],
+                  "__data": [
                     {
-                      contents: Set(1) { 'String' },
-                      ext: Set(1) { 'String' },
-                      key: Set(1) { 'String' },
-                      name: Set(1) { 'String' }
+                      "contents": ["String"],
+                      "ext": ["String"],
+                      "key": ["String"],
+                      "name": ["String"]
                     }
-                  },
-                  __dataSource: Set(1) { 'Null' },
-                  __persisted: Set(1) { 'Boolean' },
-                  __strict: Set(1) { 'Boolean' },
-                  contents: Set(1) { 'String' },
-                  ext: Set(1) { 'String' },
-                  key: Set(1) { 'String' },
-                  name: Set(1) { 'String' },
-                  path: Set(1) { 'Null' }
+                  ],
+                  "__dataSource": ["Null"],
+                  "__persisted": ["Boolean"],
+                  "__strict": ["Boolean"],
+                  "contents": ["String"],
+                  "ext": ["String"],
+                  "key": ["String"],
+                  "name": ["String"],
+                  "path": ["Null"]
                 }
-              }
+              ]
             ]
-          },
-          id: Set(1) { 'String' }
+          ],
+          "id": ["String"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) {
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "files": [
             [
-              Set(1) {
+              [
                 {
-                  __cachedRelations: Set(1) { {} },
-                  __data: Set(1) {
+                  "__cachedRelations": [{}],
+                  "__data": [
                     {
-                      contents: Set(1) { 'String' },
-                      ext: Set(1) { 'String' },
-                      key: Set(1) { 'String' },
-                      name: Set(1) { 'String' },
-                      path: Set(1) { 'Null' }
+                      "contents": ["String"],
+                      "ext": ["String"],
+                      "key": ["String"],
+                      "name": ["String"],
+                      "path": ["Null"]
                     }
-                  },
-                  __dataSource: Set(1) { 'Null' },
-                  __persisted: Set(1) { 'Boolean' },
-                  __strict: Set(1) { 'Boolean' },
-                  contents: Set(1) { 'String' },
-                  ext: Set(1) { 'String' },
-                  key: Set(1) { 'String' },
-                  name: Set(1) { 'String' },
-                  path: Set(1) { 'Null' }
+                  ],
+                  "__dataSource": ["Null"],
+                  "__persisted": ["Boolean"],
+                  "__strict": ["Boolean"],
+                  "contents": ["String"],
+                  "ext": ["String"],
+                  "key": ["String"],
+                  "name": ["String"],
+                  "path": ["Null"]
                 }
-              }
+              ]
             ]
-          },
-          id: Set(1) { 'String' }
+          ],
+          "id": ["String"]
         },
         {
-          __cachedRelations: Set(1) { {} },
-          __data: Set(1) {
+          "__cachedRelations": [{}],
+          "__data": [
             {
-              __dataSource: Set(1) { 'Null' },
-              __persisted: Set(1) { 'Boolean' },
-              __strict: Set(1) { 'Boolean' },
-              completedDate: Set(1) { 'Double' },
-              id: Set(1) { 'String' }
+              "__dataSource": ["Null"],
+              "__persisted": ["Boolean"],
+              "__strict": ["Boolean"],
+              "completedDate": ["Double"],
+              "id": ["String"]
             }
-          },
-          __dataSource: Set(1) { 'Null' },
-          __persisted: Set(1) { 'Boolean' },
-          __strict: Set(1) { 'Boolean' },
-          challengeType: Set(1) { 'Null' },
-          completedDate: Set(1) { 'Double' },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'Null' }
+          ],
+          "__dataSource": ["Null"],
+          "__persisted": ["Boolean"],
+          "__strict": ["Boolean"],
+          "challengeType": ["Null"],
+          "completedDate": ["Double"],
+          "id": ["String"],
+          "solution": ["Null"]
         },
         {
-          __cachedRelations: Set(1) { {} },
-          __data: Set(1) {
+          "__cachedRelations": [{}],
+          "__data": [
             {
-              __dataSource: Set(1) { 'Null' },
-              __persisted: Set(1) { 'Boolean' },
-              __strict: Set(1) { 'Boolean' },
-              challengeType: Set(1) { 'Null' },
-              completedDate: Set(1) { 'Double' },
-              id: Set(1) { 'String' },
-              solution: Set(1) { 'Null' }
+              "__dataSource": ["Null"],
+              "__persisted": ["Boolean"],
+              "__strict": ["Boolean"],
+              "challengeType": ["Null"],
+              "completedDate": ["Double"],
+              "id": ["String"],
+              "solution": ["Null"]
             }
-          },
-          __dataSource: Set(1) { 'Null' },
-          __persisted: Set(1) { 'Boolean' },
-          __strict: Set(1) { 'Boolean' },
-          challengeType: Set(1) { 'Null' },
-          completedDate: Set(1) { 'Double' },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'Null' }
+          ],
+          "__dataSource": ["Null"],
+          "__persisted": ["Boolean"],
+          "__strict": ["Boolean"],
+          "challengeType": ["Null"],
+          "completedDate": ["Double"],
+          "id": ["String"],
+          "solution": ["Null"]
         },
         {
-          challengeType: Set(1) { 'Null' },
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) { [ Set(0) {} ] },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'String' }
+          "challengeType": ["Null"],
+          "completedDate": ["Double"],
+          "files": [[[]]],
+          "id": ["String"],
+          "solution": ["String"]
         },
         {
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) {
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "files": [
             [
-              Set(1) {
+              [
                 {
-                  __cachedRelations: Set(1) { {} },
-                  __data: Set(1) {
+                  "__cachedRelations": [{}],
+                  "__data": [
                     {
-                      __dataSource: Set(1) { 'Null' },
-                      __persisted: Set(1) { 'Boolean' },
-                      __strict: Set(1) { 'Boolean' },
-                      contents: Set(1) { 'String' },
-                      ext: Set(1) { 'String' },
-                      key: Set(1) { 'String' },
-                      name: Set(1) { 'String' },
-                      path: Set(1) { 'Null' }
+                      "__dataSource": ["Null"],
+                      "__persisted": ["Boolean"],
+                      "__strict": ["Boolean"],
+                      "contents": ["String"],
+                      "ext": ["String"],
+                      "key": ["String"],
+                      "name": ["String"],
+                      "path": ["Null"]
                     }
-                  },
-                  __dataSource: Set(1) { 'Null' },
-                  __persisted: Set(1) { 'Boolean' },
-                  __strict: Set(1) { 'Boolean' },
-                  contents: Set(1) { 'String' },
-                  ext: Set(1) { 'String' },
-                  key: Set(1) { 'String' },
-                  name: Set(1) { 'String' },
-                  path: Set(1) { 'Null' }
+                  ],
+                  "__dataSource": ["Null"],
+                  "__persisted": ["Boolean"],
+                  "__strict": ["Boolean"],
+                  "contents": ["String"],
+                  "ext": ["String"],
+                  "key": ["String"],
+                  "name": ["String"],
+                  "path": ["Null"]
                 }
-              }
+              ]
             ]
-          },
-          id: Set(1) { 'String' }
+          ],
+          "id": ["String"]
         },
         {
-          completedDate: Set(1) { 'Double' },
-          files: Set(1) {
+          "completedDate": ["Double"],
+          "files": [
             [
-              Set(1) {
+              [
                 {
-                  __cachedRelations: Set(1) { {} },
-                  __data: Set(1) {
+                  "__cachedRelations": [{}],
+                  "__data": [
                     {
-                      __dataSource: Set(1) { 'Null' },
-                      __persisted: Set(1) { 'Boolean' },
-                      __strict: Set(1) { 'Boolean' },
-                      contents: Set(1) { 'String' },
-                      ext: Set(1) { 'String' },
-                      key: Set(1) { 'String' },
-                      name: Set(1) { 'String' },
-                      path: Set(1) { 'Null' }
+                      "__dataSource": ["Null"],
+                      "__persisted": ["Boolean"],
+                      "__strict": ["Boolean"],
+                      "contents": ["String"],
+                      "ext": ["String"],
+                      "key": ["String"],
+                      "name": ["String"],
+                      "path": ["Null"]
                     }
-                  },
-                  __dataSource: Set(1) { 'Null' },
-                  __persisted: Set(1) { 'Boolean' },
-                  __strict: Set(1) { 'Boolean' },
-                  contents: Set(1) { 'String' },
-                  ext: Set(1) { 'String' },
-                  key: Set(1) { 'String' },
-                  name: Set(1) { 'String' },
-                  path: Set(1) { 'Null' }
+                  ],
+                  "__dataSource": ["Null"],
+                  "__persisted": ["Boolean"],
+                  "__strict": ["Boolean"],
+                  "contents": ["String"],
+                  "ext": ["String"],
+                  "key": ["String"],
+                  "name": ["String"],
+                  "path": ["Null"]
                 }
-              }
+              ]
             ]
-          },
-          id: Set(1) { 'String' }
+          ],
+          "id": ["String"]
         },
         {
-          __cachedRelations: Set(1) { {} },
-          __data: Set(1) {
+          "__cachedRelations": [{}],
+          "__data": [
             {
-              __dataSource: Set(1) { 'Null' },
-              __persisted: Set(1) { 'Boolean' },
-              __strict: Set(1) { 'Boolean' },
-              challengeType: Set(1) { 'Int32' },
-              completedDate: Set(1) { 'Double' },
-              id: Set(1) { 'String' }
+              "__dataSource": ["Null"],
+              "__persisted": ["Boolean"],
+              "__strict": ["Boolean"],
+              "challengeType": ["Int32"],
+              "completedDate": ["Double"],
+              "id": ["String"]
             }
-          },
-          __dataSource: Set(1) { 'Null' },
-          __persisted: Set(1) { 'Boolean' },
-          __strict: Set(1) { 'Boolean' },
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'Null' }
+          ],
+          "__dataSource": ["Null"],
+          "__persisted": ["Boolean"],
+          "__strict": ["Boolean"],
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "id": ["String"],
+          "solution": ["Null"]
         },
         {
-          __cachedRelations: Set(1) { {} },
-          __data: Set(1) {
+          "__cachedRelations": [{}],
+          "__data": [
             {
-              __dataSource: Set(1) { 'Null' },
-              __persisted: Set(1) { 'Boolean' },
-              __strict: Set(1) { 'Boolean' },
-              challengeType: Set(1) { 'Int32' },
-              completedDate: Set(1) { 'Double' },
-              id: Set(1) { 'String' },
-              solution: Set(1) { 'String' }
+              "__dataSource": ["Null"],
+              "__persisted": ["Boolean"],
+              "__strict": ["Boolean"],
+              "challengeType": ["Int32"],
+              "completedDate": ["Double"],
+              "id": ["String"],
+              "solution": ["String"]
             }
-          },
-          __dataSource: Set(1) { 'Null' },
-          __persisted: Set(1) { 'Boolean' },
-          __strict: Set(1) { 'Boolean' },
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'String' }
+          ],
+          "__dataSource": ["Null"],
+          "__persisted": ["Boolean"],
+          "__strict": ["Boolean"],
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "id": ["String"],
+          "solution": ["String"]
         },
         {
-          __cachedRelations: Set(1) { {} },
-          __data: Set(1) {
+          "__cachedRelations": [{}],
+          "__data": [
             {
-              __dataSource: Set(1) { 'Null' },
-              __persisted: Set(1) { 'Boolean' },
-              __strict: Set(1) { 'Boolean' },
-              challengeType: Set(1) { 'Int32' },
-              completedDate: Set(1) { 'Double' },
-              id: Set(1) { 'String' },
-              solution: Set(1) { 'Null' }
+              "__dataSource": ["Null"],
+              "__persisted": ["Boolean"],
+              "__strict": ["Boolean"],
+              "challengeType": ["Int32"],
+              "completedDate": ["Double"],
+              "id": ["String"],
+              "solution": ["Null"]
             }
-          },
-          __dataSource: Set(1) { 'Null' },
-          __persisted: Set(1) { 'Boolean' },
-          __strict: Set(1) { 'Boolean' },
-          challengeType: Set(1) { 'Int32' },
-          completedDate: Set(1) { 'Double' },
-          id: Set(1) { 'String' },
-          solution: Set(1) { 'Null' }
+          ],
+          "__dataSource": ["Null"],
+          "__persisted": ["Boolean"],
+          "__strict": ["Boolean"],
+          "challengeType": ["Int32"],
+          "completedDate": ["Double"],
+          "id": ["String"],
+          "solution": ["Null"]
         }
-      }
+      ]
     ]
-  },
-  currentChallengeId: Set(2) { 'String', 'Undefined' },
-  email: Set(1) { 'String' },
-  emailAuthLinkTTL: Set(3) { 'Null', 'DateTime', 'Undefined' },
-  emailVerified: Set(1) { 'Boolean' },
-  emailVerifyTTL: Set(3) { 'Null', 'DateTime', 'Undefined' },
-  externalId: Set(1) { 'String' },
-  github: Set(2) { 'Null', 'Undefined' },
-  isDonating: Set(1) { 'Boolean' },
-  isHonest: Set(2) { 'Boolean', 'Undefined' },
-  isRespWebDesignCert: Set(2) { 'Boolean', 'Undefined' },
-  linkedin: Set(3) { 'Null', 'String', 'Undefined' },
-  location: Set(2) { 'String', 'Null' },
-  name: Set(2) { 'String', 'Null' },
-  picture: Set(1) { 'String' },
-  portfolio: Set(1) {
+  ],
+  "currentChallengeId": ["String", "Undefined"],
+  "email": ["String"],
+  "emailAuthLinkTTL": ["Null", "DateTime", "Undefined"],
+  "emailVerified": ["Boolean"],
+  "emailVerifyTTL": ["Null", "DateTime", "Undefined"],
+  "externalId": ["String"],
+  "github": ["Null", "Undefined"],
+  "isDonating": ["Boolean"],
+  "isHonest": ["Boolean", "Undefined"],
+  "isRespWebDesignCert": ["Boolean", "Undefined"],
+  "linkedin": ["Null", "String", "Undefined"],
+  "location": ["String", "Null"],
+  "name": ["String", "Null"],
+  "picture": ["String"],
+  "portfolio": [
     [
-      Set(1) {
+      [
         {
-          description: Set(1) { 'String' },
-          id: Set(1) { 'String' },
-          image: Set(1) { 'String' },
-          title: Set(1) { 'String' },
-          url: Set(1) { 'String' }
+          "description": ["String"],
+          "id": ["String"],
+          "image": ["String"],
+          "title": ["String"],
+          "url": ["String"]
         }
-      }
+      ]
     ]
-  },
-  profileUI: Set(2) {
-    'Undefined',
+  ],
+  "profileUI": [
+    "Undefined",
     {
-      isLocked: Set(2) { 'Boolean', 'Undefined' },
-      showAbout: Set(2) { 'Boolean', 'Undefined' },
-      showCerts: Set(2) { 'Boolean', 'Undefined' },
-      showHeatMap: Set(2) { 'Boolean', 'Undefined' },
-      showLocation: Set(2) { 'Boolean', 'Undefined' },
-      showName: Set(2) { 'Boolean', 'Undefined' },
-      showPoints: Set(2) { 'Boolean', 'Undefined' },
-      showPortfolio: Set(2) { 'Boolean', 'Undefined' },
-      showTimeLine: Set(2) { 'Boolean', 'Undefined' },
-      showDonation: Set(2) { 'Boolean', 'Undefined' },
-      __cachedRelations: Set(2) { 'Undefined', {} },
-      __data: Set(2) {
-        'Undefined',
+      "isLocked": ["Boolean", "Undefined"],
+      "showAbout": ["Boolean", "Undefined"],
+      "showCerts": ["Boolean", "Undefined"],
+      "showHeatMap": ["Boolean", "Undefined"],
+      "showLocation": ["Boolean", "Undefined"],
+      "showName": ["Boolean", "Undefined"],
+      "showPoints": ["Boolean", "Undefined"],
+      "showPortfolio": ["Boolean", "Undefined"],
+      "showTimeLine": ["Boolean", "Undefined"],
+      "showDonation": ["Boolean", "Undefined"],
+      "__cachedRelations": ["Undefined", {}],
+      "__data": [
+        "Undefined",
         {
-          __persisted: Set(1) { 'Boolean' },
-          __strict: Set(1) { 'Boolean' },
-          isLocked: Set(1) { 'Boolean' },
-          showAbout: Set(1) { 'Boolean' },
-          showCerts: Set(1) { 'Boolean' },
-          showHeatMap: Set(1) { 'Boolean' },
-          showLocation: Set(1) { 'Boolean' },
-          showName: Set(1) { 'Boolean' },
-          showPoints: Set(1) { 'Boolean' },
-          showPortfolio: Set(1) { 'Boolean' },
-          showTimeLine: Set(1) { 'Boolean' },
-          showDonation: Set(2) { 'Boolean', 'Undefined' }
+          "__persisted": ["Boolean"],
+          "__strict": ["Boolean"],
+          "isLocked": ["Boolean"],
+          "showAbout": ["Boolean"],
+          "showCerts": ["Boolean"],
+          "showHeatMap": ["Boolean"],
+          "showLocation": ["Boolean"],
+          "showName": ["Boolean"],
+          "showPoints": ["Boolean"],
+          "showPortfolio": ["Boolean"],
+          "showTimeLine": ["Boolean"],
+          "showDonation": ["Boolean", "Undefined"]
         }
-      },
-      __persisted: Set(2) { 'Boolean', 'Undefined' },
-      __strict: Set(2) { 'Boolean', 'Undefined' }
+      ],
+      "__persisted": ["Boolean", "Undefined"],
+      "__strict": ["Boolean", "Undefined"]
     }
-  },
-  progressTimestamps: Set(1) {
+  ],
+  "progressTimestamps": [
+    [[{ "timestamp": ["Double"] }, "Double", "Null", "Int64"]]
+  ],
+  "sendQuincyEmail": ["Boolean"],
+  "twitter": ["Null", "String", "Undefined"],
+  "unsubscribeId": ["String"],
+  "username": ["String"],
+  "website": ["String", "Undefined"],
+  "githubProfile": ["String", "Undefined"],
+  "isBackEndCert": ["Boolean", "Undefined"],
+  "isBanned": ["Boolean", "Undefined"],
+  "isCheater": ["Boolean", "Undefined"],
+  "isFullStackCert": ["Boolean", "Undefined"],
+  "isGithub": ["Boolean", "Undefined"],
+  "isLinkedIn": ["Boolean", "Undefined"],
+  "isTwitter": ["Boolean", "Undefined"],
+  "isWebsite": ["Boolean", "Undefined"],
+  "password": ["String", "Undefined"],
+  "theme": ["String", "Undefined"],
+  "newEmail": ["Null", "Undefined", "String"],
+  "isJsAlgoDataStructCert": ["Boolean", "Undefined"],
+  "donationEmails": ["Undefined", [["String"]]],
+  "timezone": ["String", "Undefined"],
+  "isFrontEndLibsCert": ["Boolean", "Undefined"],
+  "isFrontEndCert": ["Boolean", "Undefined"],
+  "is2018DataVisCert": ["Boolean", "Undefined"],
+  "is2018FullStackCert": ["Boolean", "Undefined"],
+  "isApisMicroservicesCert": ["Boolean", "Undefined"],
+  "isDataVisCert": ["Boolean", "Undefined"],
+  "isInfosecQaCert": ["Boolean", "Undefined"],
+  "partiallyCompletedChallenges": ["Undefined", [[]]],
+  "sound": ["Boolean", "Undefined"],
+  "yearsTopContributor": ["Undefined", [["String"]]],
+  "keyboardShortcuts": ["Boolean", "Undefined"],
+  "usernameDisplay": ["String", "Undefined"],
+  "isDataAnalysisPyCertV7": ["Boolean", "Undefined"],
+  "needsModeration": ["Boolean", "Undefined"],
+  "savedChallenges": [
+    "Undefined",
     [
-      Set(4) {
-        { timestamp: Set(1) { 'Double' } },
-        'Double',
-        'Null',
-        'Int64'
-      }
-    ]
-  },
-  sendQuincyEmail: Set(1) { 'Boolean' },
-  twitter: Set(3) { 'Null', 'String', 'Undefined' },
-  unsubscribeId: Set(1) { 'String' },
-  username: Set(1) { 'String' },
-  website: Set(2) { 'String', 'Undefined' },
-  githubProfile: Set(2) { 'String', 'Undefined' },
-  isBackEndCert: Set(2) { 'Boolean', 'Undefined' },
-  isBanned: Set(2) { 'Boolean', 'Undefined' },
-  isCheater: Set(2) { 'Boolean', 'Undefined' },
-  isFullStackCert: Set(2) { 'Boolean', 'Undefined' },
-  isGithub: Set(2) { 'Boolean', 'Undefined' },
-  isLinkedIn: Set(2) { 'Boolean', 'Undefined' },
-  isTwitter: Set(2) { 'Boolean', 'Undefined' },
-  isWebsite: Set(2) { 'Boolean', 'Undefined' },
-  password: Set(2) { 'String', 'Undefined' },
-  theme: Set(2) { 'String', 'Undefined' },
-  newEmail: Set(3) { 'Null', 'Undefined', 'String' },
-  isJsAlgoDataStructCert: Set(2) { 'Boolean', 'Undefined' },
-  donationEmails: Set(2) { 'Undefined', [ Set(1) { 'String' } ] },
-  timezone: Set(2) { 'String', 'Undefined' },
-  isFrontEndLibsCert: Set(2) { 'Boolean', 'Undefined' },
-  isFrontEndCert: Set(2) { 'Boolean', 'Undefined' },
-  is2018DataVisCert: Set(2) { 'Boolean', 'Undefined' },
-  is2018FullStackCert: Set(2) { 'Boolean', 'Undefined' },
-  isApisMicroservicesCert: Set(2) { 'Boolean', 'Undefined' },
-  isDataVisCert: Set(2) { 'Boolean', 'Undefined' },
-  isInfosecQaCert: Set(2) { 'Boolean', 'Undefined' },
-  partiallyCompletedChallenges: Set(2) { 'Undefined', [ Set(0) {} ] },
-  sound: Set(2) { 'Boolean', 'Undefined' },
-  yearsTopContributor: Set(2) { 'Undefined', [ Set(1) { 'String' } ] },
-  keyboardShortcuts: Set(2) { 'Boolean', 'Undefined' },
-  usernameDisplay: Set(2) { 'String', 'Undefined' },
-  isDataAnalysisPyCertV7: Set(2) { 'Boolean', 'Undefined' },
-  needsModeration: Set(2) { 'Boolean', 'Undefined' },
-  savedChallenges: Set(2) {
-    'Undefined',
-    [
-      Set(1) {
+      [
         {
-          files: Set(1) {
+          "files": [
             [
-              Set(1) {
+              [
                 {
-                  contents: Set(1) { 'String' },
-                  ext: Set(1) { 'String' },
-                  history: Set(1) { [ Set(1) { 'String' } ] },
-                  key: Set(1) { 'String' },
-                  name: Set(1) { 'String' }
+                  "contents": ["String"],
+                  "ext": ["String"],
+                  "history": [[["String"]]],
+                  "key": ["String"],
+                  "name": ["String"]
                 }
-              }
+              ]
             ]
-          },
-          id: Set(1) { 'String' },
-          lastSavedDate: Set(1) { 'Double' }
+          ],
+          "id": ["String"],
+          "lastSavedDate": ["Double"]
         }
-      }
+      ]
     ]
-  },
-  isSciCompPyCertV7: Set(2) { 'Boolean', 'Undefined' },
-  isInfosecCertV7: Set(2) { 'Boolean', 'Undefined' },
-  isMachineLearningPyCertV7: Set(2) { 'Boolean', 'Undefined' },
-  isQaCertV7: Set(2) { 'Boolean', 'Undefined' },
-  isRelationalDatabaseCertV8: Set(2) { 'Boolean', 'Undefined' },
-  verificationToken: Set(2) { 'String', 'Undefined' },
-  badges: Set(2) {
-    'Undefined',
-    { coreTeam: Set(1) { [ Set(0) {} ] } }
-  },
-  rand: Set(2) { 'Double', 'Undefined' }
+  ],
+  "isSciCompPyCertV7": ["Boolean", "Undefined"],
+  "isInfosecCertV7": ["Boolean", "Undefined"],
+  "isMachineLearningPyCertV7": ["Boolean", "Undefined"],
+  "isQaCertV7": ["Boolean", "Undefined"],
+  "isRelationalDatabaseCertV8": ["Boolean", "Undefined"],
+  "verificationToken": ["String", "Undefined"],
+  "badges": ["Undefined", { "coreTeam": [[[]]] }],
+  "rand": ["Double", "Undefined"]
 }

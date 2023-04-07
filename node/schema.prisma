@@ -1,0 +1,124 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("MONGOHQ_URL")
+}
+
+// TODO Complete
+type CompletedChallenge {
+    completedDate Float
+}
+
+type Portfolio {
+    description String
+    id          String
+    image       String
+    title       String
+    url         String
+}
+
+type ProfileUIData {
+    persisted     Boolean? @map("__persisted") // Undefined
+    strict        Boolean? @map("__strict") // Undefined
+    isLocked      Boolean
+    showAbout     Boolean
+    showCerts     Boolean
+    showHeatMap   Boolean
+    showLocation  Boolean
+    showName      Boolean
+    showPoints    Boolean
+    showPortfolio Boolean
+    showTimeLine  Boolean
+    showDonation  Boolean? // Undefined
+}
+
+type ProfileUI {
+    isLocked        Boolean? // Undefined
+    showAbout       Boolean? // Undefined
+    showCerts       Boolean? // Undefined
+    showHeatMap     Boolean? // Undefined
+    showLocation    Boolean? // Undefined
+    showName        Boolean? // Undefined
+    showPoints      Boolean? // Undefined
+    showPortfolio   Boolean? // Undefined
+    showTimeLine    Boolean? // Undefined
+    showDonation    Boolean? // Undefined
+    cachedRelations Json?          @map("__cachedRelations") // Undefined | {}
+    data            ProfileUIData? @map("__data") // Undefined
+    persisted       Boolean?       @map("__persisted") // Undefined
+    strict          Boolean?       @map("__strict") // Undefined
+}
+
+type ProgressTimestamp {
+    timestamp Float
+}
+
+model user {
+    id                           String               @id @default(auto()) @map("_id") @db.ObjectId
+    about                        String
+    acceptedPrivacyTerms         Boolean
+    completedChallenges          CompletedChallenge[]
+    currentChallengeId           String?
+    email                        String
+    emailAuthLinkTTL             DateTime? // Null | Undefined
+    emailVerified                Boolean
+    emailVerifyTTL               DateTime? // Null | Undefined
+    externalId                   String
+    github                       Json? // Only Null | Undefined
+    isDonating                   Boolean
+    isHonest                     Boolean?
+    isRespWebDesignCert          Boolean?
+    linkedin                     String? // Null | Undefined
+    location                     String? // Null
+    name                         String? // Null
+    picture                      String
+    portfolio                    Portfolio[]
+    profileUI                    ProfileUI? // Undefined
+    progressTimestamps           Json[] // ProgressTimestamp[] | Null[] | Int64[] | Double[]
+    sendQuincyEmail              Boolean
+    twitter                      String? // Null | Undefined
+    unsubscribeId                String
+    username                     String
+    website                      String? // Undefined
+    githubProfile                String? // Undefined
+    isBackEndCert                Boolean? // Undefined
+    isBanned                     Boolean? // Undefined
+    isCheater                    Boolean? // Undefined
+    isFullStackCert              Boolean? // Undefined
+    isGithub                     Boolean? // Undefined
+    isLinkedIn                   Boolean? // Undefined
+    isTwitter                    Boolean? // Undefined
+    isWebsite                    Boolean? // Undefined
+    password                     String? // Undefined
+    theme                        String? // Undefined
+    newEmail                     String? // Null | Undefined
+    isJsAlgoDataStructCert       Boolean? // Undefined
+    donationEmails               Json? // Undefined | String[]
+    timezone                     String? // Undefined
+    isFrontEndLibsCert           Boolean? // Undefined
+    isFrontEndCert               Boolean? // Undefined
+    is2018DataVisCert            Boolean? // Undefined
+    is2018FullStackCert          Boolean? // Undefined
+    isApisMicroservicesCert      Boolean? // Undefined
+    isDataVisCert                Boolean? // Undefined
+    isInfosecQaCert              Boolean? // Undefined
+    partiallyCompletedChallenges Json? // Undefined | TODO:
+    sound                        Boolean? // Undefined
+    yearsTopContributor          Json? // Undefined | String[]
+    keyboardShortcuts            Boolean? // Undefined
+    usernameDisplay              String? // Undefined
+    isDataAnalysisPyCertV7       Boolean? // Undefined
+    needsModeration              Boolean? // Undefined
+    savedChallenges              Json? // Undefined | TODO:
+    isSciCompPyCertV7            Boolean? // Undefined
+    isInfosecCertV7              Boolean? // Undefined
+    isMachineLearningPyCertV7    Boolean? // Undefined
+    isQaCertV7                   Boolean? // Undefined
+    isRelationalDatabaseCertV7   Boolean? // Undefined
+    verificationToken            String? // Undefined
+    badges                       Json? // Undefined | { coreTeam [][] }
+    rand                         Float? // Undefined
+}

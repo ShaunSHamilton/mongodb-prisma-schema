@@ -1,16 +1,21 @@
 import { writeFile } from "fs/promises";
-const SCHEMA_ARRAY_PATH = "../schema-array.json";
+
+import { readFileSync } from "fs";
+
+import { parse } from "./parser.js";
+import { merge } from "./merger.js";
+import { inspect } from "util";
+
+const data = readFileSync("../schema-array.json", "utf8");
+
+const schemaArray = JSON.parse(data);
 
 async function main() {
-  const schema_array = (
-    await import(SCHEMA_ARRAY_PATH, {
-      assert: { type: "json" },
-    })
-  ).default;
-  const combined_schema = combine_schemas(schema_array);
+  const combined_schema = combine_schemas(schemaArray);
+  console.log(inspect(combined_schema, { depth: null, colors: true }));
   await writeFile(
     "combined-schema.json",
-    JSON.stringify(combined_schema, null, 2)
+    inspect(combined_schema, { depth: null })
   );
 }
 
@@ -71,51 +76,16 @@ type Schema = { [key: string]: SchemaValue[] };
 // If key is missing in schema, add whole json value
 // If key is missing in json, add "Undefined" to schema
 
-function combine_schemas(json_array: Schema[]): Schema {
+function combine_schemas(json_array: Schema[]): Record<string, unknown> {
   // Add first schema without "Undefined"s
-  const result: Schema = json_array[0];
 
+  const parsed = json_array.map(parse);
+  let result: Record<string, Set<unknown>> = parsed[0];
   // Skip first schema
-  for (const schema of json_array.slice(1)) {
-    for (const [key, value] of Object.entries(schema)) {
-      if (key in result) {
-        result[key] = compare(result[key], value);
-      } else {
-        result[key] = value;
-      }
-    }
+  for (const schema of parsed.slice(1)) {
+    result = merge(result, schema);
   }
   return result;
 }
 
-function compare(result: SchemaValue, schema: SchemaValue): SchemaValue[] {
-  const schema_value: SchemaValue[] = [];
-  if (Array.isArray(result) && Array.isArray(schema)) {
-    schema_value.push(...result);
-    for (const value of schema) {
-      if (!schema_value.includes(value)) {
-        schema_value.push(value);
-      }
-    }
-  }
-  if (typeof result === "object" && typeof schema === "object") {
-    for (const [key, value] of Object.entries(result)) {
-      if (key in schema) {
-        // @ts-ignore
-        schema_value.push({ [key]: compare(value, schema[key]) });
-      } else {
-        schema_value.push({ [key]: value });
-      }
-    }
-  }
-  if (typeof result === "string" && typeof schema === "string") {
-    if (result !== schema) {
-      schema_value.push(result, schema);
-    } else {
-      schema_value.push(result);
-    }
-  }
-  return schema_value;
-}
-
-await main();
+main();

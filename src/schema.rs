@@ -1,9 +1,9 @@
 use mongodb::bson::{Bson, Document};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use std::collections::HashMap;
 
-#[derive(Debug, PartialEq, Eq, Serialize, Clone)]
+#[derive(Debug, PartialEq, Deserialize, Eq, Serialize, Clone)]
 pub struct Schema(pub HashMap<String, Vec<Value>>);
 
 // pub type Schema = HashMap<String, Vec<Value>>;

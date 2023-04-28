@@ -6,6 +6,7 @@ use tokio;
 
 mod clapper;
 mod db;
+mod merger;
 mod schema;
 
 use clapper::Args;
@@ -18,11 +19,14 @@ async fn main() -> mongodb::error::Result<()> {
     let args = Args::parse();
     // Parse your connection string into an options struct
     let collection = get_collection(&args.uri, &args.db, &args.collection).await?;
-    // find the first 2 documents in users_collection, and print them, without iterating over the entire cursor
-    let num_docs = 1_000;
-    let mut cursor = collection
-        .find(doc! {}, FindOptions::builder().limit(num_docs).build())
-        .await?;
+
+    // Only use `.limit` if `num_docs` is provided
+    let find_ops = if let Some(num_docs) = args.num_docs {
+        FindOptions::builder().limit(num_docs).build()
+    } else {
+        FindOptions::builder().build()
+    };
+    let mut cursor = collection.find(doc! {}, find_ops).await?;
 
     let mut schemas = Set::new();
     let mut count = 0;
@@ -37,7 +41,7 @@ async fn main() -> mongodb::error::Result<()> {
     }
     println!(
         "Number of schemas for {:?} docs = {:#?}",
-        num_docs,
+        args.num_docs,
         schemas.schemas.len()
     );
     write_hashmap(&schemas, args.output);

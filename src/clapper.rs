@@ -22,4 +22,8 @@ pub struct Args {
     /// If not provided, will default to `mongodb://127.0.0.1:27017`
     #[arg(short, long, default_value = "mongodb://127.0.0.1:27017")]
     pub uri: String,
+
+    /// Number of documents to process
+    #[arg(short, long, default_value = "None")]
+    pub num_docs: Option<i64>,
 }
